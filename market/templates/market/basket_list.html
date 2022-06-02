@@ -1,0 +1,37 @@
+{%extends 'market/base.html'%}
+{%block content%}
+
+<title>Корзина</title>
+<div class="container-fluid">
+    <div class="row">
+        <h1>Ваш заказ:</h1>
+        {%if products%}
+            {%for product in products%}
+        <div class="col-lg-12">
+            <ul>
+                <li> <h3 style="color:black">{{product.product}}</h3>
+                <h4 style="color:black">Количество:{{product.count}}</h4>
+                <h4 style="color:black">Цена: {{product.price}}</h4></li>
+                <a type="button" class="btn btn-success" href="{%url 'product' product_pk=product.pk%}">Посмотреть товар в каталоге</a>
+                <button type="button" class="btn btn-danger" href="#"> Удалить из корзины</button>
+            </ul>
+        </div>
+    </div>
+</div>
+{%endfor%}
+<div class="container-fluid">
+    <h4><strong>ИТОГО:{{summ}}</strong></h4>
+</div>
+<div class="container-fluid">
+    <a type="button" class="btn btn-success sm" href="#"> Перейти к оплате</a>
+</div>
+{%else%}
+<div class="container-fluid">
+    <h3>Ваша корзина пуста!</h3>
+</div>
+{%endif%}
+
+
+
+
+{%endblock%}

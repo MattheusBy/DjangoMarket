@@ -1,0 +1,143 @@
+header {
+ font-family:Snell Roundhand, cursive;
+ background-image: linear-gradient(green,white);
+ height:900 px;
+ text-align:left;
+ margin: -8
+}
+ul.main {
+  list-style: none; /*убираем маркеры списка*/
+  margin: 0; /*убираем отступы*/
+  padding-left: 5 px; /*убираем отступы*/
+}
+li.main {
+  float:left; /*Размещаем список горизонтально для реализации меню*/
+  margin-right: 20 px /*Добавляем отступ у пунктов меню*/
+}
+p.title {
+    color: black;
+    font-size: 20pt;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-variant: small-caps;
+    text-align: center
+    }
+p.description {
+    color: black;
+    font-size: 16pt;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+    text-align: left
+    }
+p.price{
+    color: #210B21;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 900;
+}
+p.reviews {
+    color: #210B21;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600
+}
+h {
+    color: #210B21;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-variant: small-caps;
+    text-align: center
+
+}
+a {
+    background: green
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+a.review {
+    background: green
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+# Звезды для отзыва
+.rating-area {
+	overflow: hidden;
+	width: 265px;
+	margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+div.footer {
+	display: inline-block; /*Задаем блочно-строчное отображение*/
+  	width: 180px; /*задаем ширину блока*/
+	background: dodgerblue;
+        }
+
+        .string {
+         text-align: center; /*Равняем текст по-горизонтали*/
+        }

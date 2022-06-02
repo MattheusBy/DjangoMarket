@@ -1,0 +1,42 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+{% block content %}
+
+<title>Вход</title>
+{% if form.errors %}
+  <p>Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Вы не имеете доступа к данным этой страницы.</p>
+  {% else %}
+    <p>Войдите для просмотра данной страницы.</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+  <div class="container" style="height:400px">
+    <form role="form">
+      <div class="container-fluid">
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-4" align="center">
+          <div class="form-group">
+            <label form="Username" class="control-label">Логин</label>
+            <input type="username" class="form-control" placeholder="Введите Ваш логин" {{ form.username }}
+          </div>
+          <div class="form-group">
+            <label form="Password" class="control-label">Пароль</label>
+            <input type="password" class="form-control" placeholder="Введите Ваш пароль" {{ form.password }}
+                <input type="submit" value="Войти"/><input type="hidden" name="next" value="{{ next }}" />
+                <button style="color: black" href="{% url 'password_reset' %}">Забыли пароль?</button></p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{%endblock%}

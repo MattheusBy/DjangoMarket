@@ -1,0 +1,16 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+{% block content %}
+<title>Акции</title>
+<dev class="container-fluid">
+    <h2 align="center">Акции</h2>
+    <dev class="row">
+        <dev class="col-lg-6">
+            <h1> {{stock.name}}</h1>
+            <h4 class="description"><br>{{stock.description}}</h4>
+        </dev>
+    </dev>
+</dev>
+
+{% endblock %}

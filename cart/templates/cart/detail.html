@@ -1,0 +1,54 @@
+{% extends "market/base.html" %}
+{% load static %}
+
+{% block content %}
+<title>Корзина</title>
+<div class="container-fluid" style="height:300px">
+    <h1 align="center">Ваша корзина</h1>
+    {%if cart%}
+    {% for item in cart %}
+       {% with product=item.product %}
+    <div class="row">
+        <div class="col-lg-8">
+                <ul>
+                    <li><img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="150px">
+                    <h4> <strong>{{ product.name }}</strong></h4>
+                        <h4> Количество: <strong>{{ item.quantity }}</strong></h4>
+                        <h4> Цена за шт.: <strong>{{ item.price }} BYN</strong> </h4></li>
+                        <a class="btn btn-success btn-sm" href="{%url 'product' product_pk=product.pk%}"> Подробнее </a></li>
+                        <a class="btn btn-danger btn-sm" href="{%url 'cart_remove' product_pk=product.pk%}"> Удалить из корзины </a></li>
+                </ul>
+                    <br>
+                    {% endwith %}
+            {%endfor%}
+        </div>
+    </div>
+    <div class="container-fluid" align="center">
+        <div class="row">
+            <div class="col-lg" align="center">
+            <form action="{% url 'apply_coupon' %}" method="post">
+                {{ coupon_apply_form }}
+                <input type="submit" value="Применить" class="btn btn-success btn-sm">
+            {% csrf_token %}
+    </form>
+        </div>
+            {% if cart.coupon %}
+            <h4>Скидка {{ cart.get_total_price_after_discount.discount|floatformat:"2" }} </h4>
+            <h3><strong>ИТОГО:{{ cart.get_total_price_after_discount.finish_price|floatformat:"2" }} BYN</strong></h3>
+            {%else%}
+            <h3><strong>ИТОГО:{{ cart.get_total_price }} BYN</strong></h3>
+            {%endif%}
+            <a class="btn btn-success btn-lg" href="{%url 'catalog'%}">Продолжить покупки</a>
+            <a class="btn btn-success btn-lg" href="{% url 'order_create' %}">Перейти к оплате</a>
+        </div>
+    </div>
+</div>
+{%else%}
+<div class="container-fluid" align="center">
+        <div class="row">
+            <h3>Ваша корзина пуста</h3>
+            <a class="btn btn-success btn-lg" href="{%url 'catalog'%}">Найти товары</a>
+        </div>
+</div>
+{%endif%}
+{% endblock %}

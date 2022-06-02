@@ -1,0 +1,65 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+
+
+{% block content %}
+<div class = 'col-lg' style="overflow: auto">
+    <title>Регистрация</title>
+    <form method="post" style="height: 800px;">
+    {% csrf_token %}
+      <div class="container-fluid">
+          <div class="container">
+                <div class="justify-content-md-center">
+                       <label form="Username" class="control-label">Ваш логин</label>
+                       <input type="username" class="form-control" placeholder="Введите Ваш логин (будет использован для входа на сайт)"{{ form.username }}
+                </div>
+                <div class="justify-content-md-center">
+                         <div class="form-group">
+                            <label form="first_name" class="control-label">Ваше имя</label>
+                              <input type="first_name" class="form-control" placeholder="Введите Ваше имя"{{ form.first_name }}
+                         </div>
+                </div>
+                <div class="justify-content-md-center">
+                         <div class="form-group">
+                            <label form="last_name" class="control-label">Ваша фамилия</label>
+                            <input type="last_name" class="form-control" placeholder="Введите Вашу фамилию"{{ form.last_name }}
+                         </div>
+                </div>
+                    <div class="justify-content-md-center">
+                        <div class="form-group">
+                            <label form="email" class="control-label">Email</label>
+                            <input type="email" class="form-control" placeholder="Введите Вашу почту"{{ form.email }}
+                        </div>
+                        <div class="justify-content-md-center">
+              <div class="form-group">
+                <label form="password1" class="control-label">Пароль</label>
+                 <input type="password1" class="form-control" placeholder="Придумайте надежный пароль (пароль должен содержать набор цифр и букв)"{{ form.password1 }}
+              </div>
+                <div class="form-group">
+                     <label form="password2" class="control-label">Пароль еще раз</label>
+                     <input type="password1" class="form-control" placeholder="Введите пароль повторно"{{ form.password2 }}
+                </div>
+                <div class="form-group">
+                     <label form="city" class="control-label">Город</label>
+                     <input type="city" class="form-control" placeholder="Укажите город"{{ form.city }}
+                </div>
+                <div class="form-group">
+                     <label form="adress" class="control-label">Адрес доставки</label>
+                     <input type="adress" class="form-control" placeholder="Адрес доставки"{{ form.adress }}
+                </div>
+                    <div class="justify-content-md-center">
+              {{ form.captcha.label_tag }}<br>
+              {{ form.captcha }}
+                    </div>
+                        <div align="center" style="position:center">
+                        <input type="submit" value="Зарегистрироваться"/><input align="center" type="hidden" name="next" value="{{ next }}" />
+                        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </form>
+</div>
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'market/base.html'%}
+
+{% block content %}
+
+<title>Акции</title>
+<div class="container" style="height:350px">
+    <h2 align="center">Акции</h2>
+    <div class="row">
+        <div class="col-lg-6" align="left">
+            {%for stock in stocks|slice:":3"%}
+                <h3>{{stock.name}}</h3>
+                <a href="{%url 'stocks_info' stocks_pk=stock.pk%}">Подробнее</a>
+              {%endfor%}
+        </div><div class="col-lg-6" align="center">
+            {%for stock in stocks|slice:"3:"%}
+                <h3>{{stock.name}}</h3>
+                <a href="#">Подробнее</a>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+        {% endblock %}

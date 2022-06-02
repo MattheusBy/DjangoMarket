@@ -1,0 +1,56 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+{%block content%}
+
+<title>Добро пожаловать</title>
+
+<div class="container-fluid" style="height:auto">
+    <h2 align="center">Добро пожаловать в наш Магазин!</h2>
+    <div class="col-lg-12" align="center">
+        <form action="{% url 'search_results' %}" method="get">
+            <input type="text" name="search_line" class="form-control" placeholder="Найти" aria-describedby="search-addon" /><br>
+            <input type="submit" class="btn btn-success" value="Поиск">
+        </form>
+    </div>
+</div>
+        <br>
+        <div class="row>">
+             <div class="col-lg-6" align="center">
+                 {%for product in products|slice:"1:2"%}
+                 <h3>{{product.name}}</h3>
+<!--                 {%if product.foto.url%}-->
+<!--                 <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">-->
+<!--                 {%endif%}-->
+                 {%endfor%}
+             </div>
+            <div class="col-lg-6" align="center">
+                 {%for product in products|slice:"2:3"%}
+                 <h3>{{product.name}}</h3>
+<!--                 {%if product.foto.url%}-->
+<!--                 <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">-->
+<!--                 {%endif%}-->
+                 {%endfor%}
+            </div>
+        </div>
+        <div class="row>">
+              <div class="col-lg-6" align="center">
+                  {%for product in products|slice:"1:2"%}
+<!--                   <h3>{{product.name}}</h3>-->
+                  {%if product.foto.url%}
+                  <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="150px">
+                  {%endif%}
+                  {%endfor%}
+              </div>
+             <div class="col-lg-6" align="center">
+                 {%for product in products|slice:"2:3"%}
+<!--                 <h3>{{product.name}}</h3>-->
+                 {%if product.foto.url%}
+                 <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="150px">
+                 {%endif%}
+                 {%endfor%}
+             </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

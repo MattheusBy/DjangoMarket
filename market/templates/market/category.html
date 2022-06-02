@@ -1,0 +1,91 @@
+{%extends 'market/base.html'%}
+
+
+{%block content%}
+<title>Каталог</title>
+<div class="container-fluid" style="height:500px">
+    <h2 align="center">Категории товаров</h2>
+    <div class="row">
+        {%if subcategories%}
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:":1"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:"1:2"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:"2:3"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid" style="height:400px">
+    <div class="row">
+        {%if subcategories%}
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:"3:4"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:"4:5"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+        <div class="col-lg-4" align="center">
+               {%for subcategory in subcategories|slice:"5:6"%}
+                <h3>{{subcategory.name}}</h3>
+                {%if subcategory.logo%}
+                    <img src="{{MEDIA_ROOT}}{{subcategory.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_subcategory' subcategory_pk=subcategory.pk%}">Перейти в категорию</a>
+                {%endfor%}
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%else%}
+<div class="container">
+    <h2 align="center">В этом разделе пока нет товаров</h2>
+</div>
+{%endif%}
+{%endblock%}

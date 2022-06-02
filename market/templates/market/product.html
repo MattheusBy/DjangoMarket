@@ -1,0 +1,66 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+    {% block content %}
+<title>{{product.name}}</title>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="title"> {{product.name}}</h2>
+            <small>Категория: </small><a align="left" href="#">{{product.subcategory}}</a><br>
+            {%if product.foto%}
+            <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto">
+            {%else%}
+            <br>
+            <h4 align="center">Изображение отсутствует</h4>
+            {%endif%}
+    </div>
+        <div class="col-lg-6">
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 align="left" class="description"><b>Описание:<br></b><br>{{product.description}}</h4>
+            <br>
+            <h3 class="price"><strong>Цена:{{product.price}} рублей</strong> <small float="right">${{dollar}}/€{{euro}}</small><h4 align="right" class="price"><small> </small></h4></h3><br>
+            <h4 style="text-align:left"><b>Оценка покупателей: {{product.marks}}</b></h4>
+            {%if product.count%}
+            <h4 align="left"><strong>Количество на складе: </strong>{{product.count}}</h4>
+            {%else%}
+            <h4>Данный товар отсутствует на складе</h4>
+            <a class="btn btn-info btn-xs" href="#"><i class="glyphicon glyphicon-bullhorn"></i> Сообщить о поступлении</a><br>
+            <br>
+            {%endif%}
+            {%if user.is_authenticated%}
+                    <form action="{% url "cart_add" product.pk %}" method="post">
+                        {{ cart_product_form }}
+                        {% csrf_token %}
+                        <input type="submit" value="Добавить в корзину" class="btn btn-success">
+                        <a class="btn btn-success" href="{%url 'add_review' product_pk=product.pk%}"> Оставить отзыв</a>
+                    </form>
+            {%else%}
+            <h4>Для заказа товара войдите на сайт</h4>
+            {%endif%}
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+           <h3 align="center"><b>Отзывы о товаре:</b></h3>
+        {%if reviews%}
+        {%for review in reviews%}
+       <div class="col-lg-4">
+            <blockquote>
+                {{review.text}}
+                <footer>{{review.user}}</footer>
+            </blockquote>
+       </div>
+    {%endfor%}
+    {%else%}
+    <h4>У этого товара пока нет ни одного отзыва</h4>
+    {%endif%}
+       </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends 'market/base.html'%}
+
+
+{%block content%}
+
+<title>Каталог</title>
+<div class="container-fluid" style="height:400 px">
+    <h2 align="center">Категории товаров</h2>
+    <div class="row">
+        <div class="col-lg-4" align="center">
+                {%for category in categories|slice:"0:3"%}
+                <h3>{{category.name}}</h3>
+                {%if category.logo%}
+                    <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                <br>
+                <br>
+                {%endif%}
+                <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                {%endfor%}
+        </div>
+        <div class="col-lg-4" align="center">
+            {%for category in categories|slice:"3:6"%}
+            <h3>{{category.name}}</h3>
+                    {%if category.logo%}
+                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                    <br>
+                    <br>
+                    {%endif%}
+                    <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                    {%endfor%}
+            </div>
+            <div class="col-lg-4" align="center">
+                {%for category in categories|slice:"6:"%}
+                    <h3>{{category.name}}</h3>
+                    {%if category.logo%}
+                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                    <br>
+                    <br>
+                    {%endif%}
+                    <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                    {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

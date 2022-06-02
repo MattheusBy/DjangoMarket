@@ -1,0 +1,50 @@
+{% extends "market/base.html" %}
+
+{% block content %}
+    <title>Оформление заказа</title>
+    <div class=container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                    {% for item in cart %}
+                <h4><strong>{{ item.product.name }}</strong></h4><br>
+                <img src='{{MEDIA_ROOT}}{{item.product.foto.url}}' alt="foto" width="150px">
+                <h5> Количество: {{ item.quantity }}</h5>
+                <h5> Цена: {{ item.total_price }} BYN</h5>
+                    {% endfor %}
+                <h3 align="center"><strong> ИТОГО: {{ cart.get_total_price }} BYN</strong></h3>
+                <br>
+                <br>
+            </div>
+            <div class="col-lg-6">
+                <form action="." method="post" class="order-form">
+                    <div class="justify-content-md-center">
+                       <label form="first_name" class="control-label">Ваше имя</label>
+                       <input type="first_name" class="form-control" {{ form.first_name }}
+                    </div>
+                    <div class="justify-content-md-center">
+                       <label form="last_name" class="control-label">Ваша фамилия</label>
+                       <input type="last_name" class="form-control" {{ form.last_name }}
+                    </div>
+                    <div class="justify-content-md-center">
+                       <label form="email" class="control-label">Email</label>
+                       <input type="email" class="form-control" {{ form.email }}
+                    </div>
+                    <div class="justify-content-md-center">
+                       <label form="city" class="control-label">Город</label>
+                       <input type="city" class="form-control" {{ form.city }}
+                    </div>
+                    <div class="justify-content-md-center">
+                       <label form="address" class="control-label">Адрес</label>
+                       <input type="address" class="form-control" {{ form.address }}
+                    </div>
+                    <div class="justify-content-md-center">
+                       <label form="postal_code" class="control-label">Индекс</label>
+                       <input type="postal_code" class="form-control" {{ form.postal_code }}
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Оформить заказ"></p>
+                    {% csrf_token %}
+                </form>
+            </div>
+    </div>
+</div>
+{% endblock %}
