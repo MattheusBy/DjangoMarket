@@ -31,11 +31,13 @@ lxml==4.8.0
 packaging==21.3
 Pillow==9.1.0
 prompt-toolkit==3.0.29
+psycopg2-binary==2.9.3
 pyparsing==3.0.9
 python-crontab==2.6.0
 python-dateutil==2.8.2
 pytz==2022.1
 redis==4.3.1
+redis-server==5.0.7
 requests==2.27.1
 six==1.16.0
 soupsieve==2.3.2.post1
