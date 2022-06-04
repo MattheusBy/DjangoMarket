@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .models import Reviews, Basket, Feedback, CustomUser
 from captcha.fields import CaptchaField
 
+from .models import Favorites
+
 
 class ReviewCreateForm(forms.ModelForm):
     class Meta:
@@ -98,3 +100,13 @@ class FeedbackForm(forms.ModelForm):
                    "topic": forms.TextInput,
                    "text_message": forms.TextInput,
                    }
+
+
+class MultipleForm(forms.Form):
+    action = forms.CharField(max_length=60, widget=forms.HiddenInput())
+
+
+class AddToFavoritesForm(forms.ModelForm):
+    class Meta:
+        model = Favorites
+        fields = ('product_favorite', 'user',)

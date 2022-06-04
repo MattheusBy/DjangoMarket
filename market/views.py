@@ -3,7 +3,8 @@ import random
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Max
-from django.shortcuts import redirect
+from django.http import HttpResponseForbidden, request
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
@@ -11,8 +12,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
 from cart.forms import CartAddProductForm
-from market.forms import ReviewCreateForm, UserCreateForm, FeedbackForm
-from market.models import Product, Reviews, Category, Stocks, Subcategory, CustomUser
+from market.forms import ReviewCreateForm, UserCreateForm, FeedbackForm, AddToFavoritesForm
+from market.models import Product, Reviews, Category, Stocks, Subcategory, CustomUser, Favorites
 from parsing_currency import euro, dollar
 
 
@@ -80,6 +81,7 @@ class ProductView(TemplateView):
         context["euro"] = round((product.price / float(euro)), 2)
         context["dollar"] = round((product.price / float(dollar)), 2)
         context["cart_product_form"] = CartAddProductForm()
+        context["add_to_favorites_form"] = AddToFavoritesForm()
         return self.render_to_response(context)
 
 
@@ -182,7 +184,6 @@ class FeedbackDone(TemplateView):
     template_name = "market/feedback_done.html"
 
 
-
 class SearchResultsView(ListView):
     template_name = 'market/search_results.html'
     model = Product
@@ -195,3 +196,26 @@ class SearchResultsView(ListView):
 
 class SearchView(TemplateView):
     template_name = "market/search.html"
+
+
+def add_to_favorites(request, product_pk):
+    product = get_object_or_404(Product, pk=product_pk)
+    user = request.user
+    form2 = AddToFavoritesForm(request.POST)
+    if form2.is_valid():
+        form2.user=user
+        form2.product_favorite=product
+        form2.save()
+    return redirect('added_to_favorites')
+
+class AddedToFavorites(TemplateView):
+    template_name = 'market/added_to_favorites.html'
+
+
+class FavoritesView (ListView):
+    model = Favorites
+    template_name = "market/favorites.html"
+    context_object_name = "favorites"
+
+    def get_queryset(self):
+        return Favorites.objects.filter(user=self.request.user)

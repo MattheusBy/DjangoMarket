@@ -1,5 +1,5 @@
 {%extends 'market/base.html'%}
-
+{%load static%}
 
 {%block content%}
 <title>Каталог</title>
@@ -7,56 +7,40 @@
 <div class="container">
     <h2 align="center">Категории товаров</h2>
     <div class="row">
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"0:1"%}
-                <h3>{{product.name}}</h3>
-                {%endfor%}
+        {%for product in products%}
+        <div class="col-lg-6" align="left">
+                <h4><a href="{%url 'product' product_pk=product.pk%}">{{product.name}}</a></h4>
+                <h5>{{product.description|slice:":256"}}...</h5>
+                <a href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
         </div>
-        <div class="col-lg-4" align="center">
-                {%for product in products|slice:"1:2"%}
-                    <h3>{{product.name}}</h3>
-                {%endfor%}
+            <div class="col-lg-4" align="center">
+                <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px"><br>
+                <br>
+                <br>
+            </div>
+        <div class="col-lg-2" align="left">
+                <h4>Цена: <strong>{{product.price}} BYN</h4>
+                    {%if user.is_authenticated%}
+                        {%if product.count > 0%}
+                           <img src="{% static 'foto/green_point.png'%}" width="10%"> В наличии
+                            <br>
+                            <br>
+                            <form action="{% url 'cart_add' product.pk %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" value="Добавить в корзину" class="btn btn-success btn-sm">
+                            </form>
+                            {%else%}
+                                <img src="{% static 'foto/red_point.png'%}" width="6%"> Нет в наличии
+                                <br>
+                                <br>
+                        {%endif%}
+                    {%endif%}
         </div>
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"2:3"%}
-                <h3>{{product.name}}</h3>
-                {%endfor%}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"0:1"%}
-                <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">
-                {%endfor%}
-        </div>
-        <div class="col-lg-4" align="center">
-                {%for product in products|slice:"1:2"%}
-                <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">
-                {%endfor%}
-        </div>
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"2:3"%}
-                <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">
-                {%endfor%}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"0:1"%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk%}" >Подробнее</a>
-                {%endfor%}
-        </div>
-        <div class="col-lg-4" align="center">
-                {%for product in products|slice:"1:2"%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
-                {%endfor%}
-        </div>
-        <div class="col-lg-4" align="center">
-            {%for product in products|slice:"2:3"%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk %}">Подробнее</a>
-                {%endfor%}
+        {%endfor%}
         </div>
     </div>
+    <br>
 </div>
 {%else%}
 <div class="container" style="height:400px">

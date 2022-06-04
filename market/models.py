@@ -74,7 +74,7 @@ class Feedback(models.Model):
     text_message = models.TextField()
 
     def __str__(self):
-        return f"{self.email_sender}{self.topic}{self.email_recipient}{self.text_message}{self.phone_number}"
+        return f"{self.email_sender}{self.topic}{self.email_recipient}{self.text_message}"
 
 
 class CustomUser(models.Model):
@@ -83,3 +83,11 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return f"{self.city}"
+
+
+class Favorites (models.Model):
+    product_favorite = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product}"

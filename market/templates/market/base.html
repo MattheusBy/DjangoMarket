@@ -36,7 +36,8 @@
                         {%else%}
                         <div class="col-lg">
                             <ul class="nav navbar-nav">
-                                <li class="main"><a href="{%url 'login'%}">Пользователь: {{user.username}}</a></li>
+                                <li class="main"><a href="{%url 'login'%}"><strong>{{user.username}}</strong></a></li>
+                                <li class="main"><a href="{%url 'favorites'%}">Избранное</a></li>
                                 <li class="main"><a href="{%url 'cart_detail'%}">Корзина</a></li>
                                 <li class="main"><a href="{%url 'logout'%}">Выйти</a></li>
                             </ul>
