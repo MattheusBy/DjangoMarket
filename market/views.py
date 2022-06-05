@@ -199,20 +199,21 @@ class SearchView(TemplateView):
 
 
 def add_to_favorites(request, product_pk):
-    product = get_object_or_404(Product, pk=product_pk)
+    # product = get_object_or_404(Product, pk=product_pk)
     user = request.user
-    form2 = AddToFavoritesForm(request.POST)
-    if form2.is_valid():
-        form2.user=user
-        form2.product_favorite=product
-        form2.save()
+    product = Product.objects.get(pk=product_pk)
+    data = {'product_favorite': product.pk,
+            'user': user.pk}
+    form2 = AddToFavoritesForm(data=data)
+    form2.save()
     return redirect('added_to_favorites')
+
 
 class AddedToFavorites(TemplateView):
     template_name = 'market/added_to_favorites.html'
 
 
-class FavoritesView (ListView):
+class FavoritesView(ListView):
     model = Favorites
     template_name = "market/favorites.html"
     context_object_name = "favorites"
