@@ -151,7 +151,7 @@ class AddedReviewView(TemplateView):
 class AddReview(FormView):
     form_class = ReviewCreateForm
     success_url = reverse_lazy("added_review")
-    template_name = "market/added_review.html"
+    template_name = "market/add_review.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user

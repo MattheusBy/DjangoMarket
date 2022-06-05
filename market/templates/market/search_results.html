@@ -1,47 +1,50 @@
 {%extends 'market/base.html'%}
-
+{%load static%}
 
 {%block content%}
 
 <title>Результаты поиска</title>
 <div class="container-fluid" style="height:300px">
     {%if object_list%}
-    <h2 align="center">Результаты поиска</h2>
-    <div class="row">
-        <div class="col-lg-4" align="center">
-                {%for product in object_list|slice:"0:1"%}
-                <h3>{{product.name}}</h3>
-                {%if product.foto%}
-                    <img src="{{MEDIA_ROOT}}{{product.foto.url}}" alt="foto" width="70px">
-                <br>
-                <br>
-                {%endif%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
-                {%endfor%}
+        <h2 align="center">Результаты поиска</h2>
+        {%for product in object_list%}
+        <div class="col-lg-6" align="left">
+            <h4><a href="{%url 'product' product_pk=product.pk%}">{{product.name}}</a></h4>
+            <h5>{{product.description|slice:":256"}}...</h5>
+            <a href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
         </div>
-      <div class="col-lg-4" align="center">
-                {%for product in object_list|slice:"1:2"%}
-                <h3>{{product.name}}</h3>
-                {%if product.foto%}
-                    <img src="{{MEDIA_ROOT}}{{product.foto.url}}" alt="foto" width="70px">
+            <div class="col-lg-4" align="center">
+                <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px"><br>
                 <br>
                 <br>
-                {%endif%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
-                {%endfor%}
+            </div>
+        <div class="col-lg-2" align="left">
+                <h4>Цена: <strong>{{product.price}} BYN</h4>
+                    {%if product.count > 0%}
+                           <img src="{% static 'foto/green_point.png'%}" width="10%"> В наличии
+                    {%else%}
+                                <img src="{% static 'foto/red_point.png'%}" width="6%"> Нет в наличии
+                    {%endif%}
+                    <br>
+                    <br>
+                    {%if user.is_authenticated%}
+                            <form action="{% url 'cart_add' product.pk %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" value="Добавить в корзину" class="btn btn-success btn-sm">
+                                <br>
+                                <br>
+                                <form action="{% url 'add_to_favorites' product.pk %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Добавить в Избранное" class="btn btn-success btn-sm">
+                            </form>
+
+                                <br>
+                                <br>
+                    {%endif%}
         </div>
-      <div class="col-lg-4" align="center">
-                {%for product in object_list|slice:"2:3"%}
-                <h3>{{product.name}}</h3>
-                {%if product.foto%}
-                    <img src="{{MEDIA_ROOT}}{{product.foto.url}}" alt="foto" width="70px">
-                <br>
-                <br>
-                {%endif%}
-                <a class="btn btn-success" href="{%url 'product' product_pk=product.pk%}">Подробнее</a>
-                {%endfor%}
+        {%endfor%}
         </div>
-    </div>
     {%else%}
     <div class="col-lg-12" align="center">
         <h2 align="center">Поиск результатов не дал</h2>

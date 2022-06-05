@@ -3,9 +3,8 @@
 
 {%block content%}
 <title>Избранное</title>
-<br>
-<h2 align="center">Избранное</h2>
 {%if favorites%}
+<h2 align="center">Избранное</h2>
 {%for favorite in favorites%}
 <br>
     <div class="row">
@@ -43,9 +42,9 @@
     </div>
 {%endfor%}
 {%else%}
-<div class="row" >
+<div class="row">
         <div class="col-lg-12" align="center">
-            <h4>У Вас нет избранных товаров</h4>
+            <h3>У Вас нет избранных товаров</h3>
         </div>
 </div>
 {%endif%}
