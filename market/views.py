@@ -7,7 +7,7 @@ from django.http import HttpResponseForbidden, request
 from django.shortcuts import redirect, render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, DeleteView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
@@ -199,7 +199,6 @@ class SearchView(TemplateView):
 
 
 def add_to_favorites(request, product_pk):
-    # product = get_object_or_404(Product, pk=product_pk)
     user = request.user
     product = Product.objects.get(pk=product_pk)
     data = {'product_favorite': product.pk,
@@ -207,6 +206,16 @@ def add_to_favorites(request, product_pk):
     form2 = AddToFavoritesForm(data=data)
     form2.save()
     return redirect('added_to_favorites')
+
+
+def remove_from_favorites(request, product_favorite_pk):
+    user_favorites = Favorites.objects.filter(user=request.user).get(product_favorite=product_favorite_pk)
+    user_favorites.delete()
+    return redirect("removed_favorite")
+
+
+class RemovedFavorite(TemplateView):
+    template_name = "market/removed_favorite.html"
 
 
 class AddedToFavorites(TemplateView):
