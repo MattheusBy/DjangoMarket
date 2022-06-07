@@ -81,17 +81,11 @@ DATABASES = {
     }
 }
 
-import os
-import psycopg2
-
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 import dj_database_url
 
 db_from_env = dj_database_url.config()
-DATABASES['default'] = {'default': dj_database_url.parse('postgres://zsvcirtgapivmc:c37d1aa8047a799e6b26ad367086231a56cfa4fd36c7b3226586365491adbcce')}
-
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
