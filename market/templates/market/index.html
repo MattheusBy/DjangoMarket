@@ -19,24 +19,17 @@
              <div class="col-lg-6" align="center">
                  {%for product in products|slice:"1:2"%}
                  <h3>{{product.name}}</h3>
-<!--                 {%if product.foto.url%}-->
-<!--                 <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">-->
-<!--                 {%endif%}-->
                  {%endfor%}
              </div>
             <div class="col-lg-6" align="center">
                  {%for product in products|slice:"2:3"%}
                  <h3>{{product.name}}</h3>
-<!--                 {%if product.foto.url%}-->
-<!--                 <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="200px">-->
-<!--                 {%endif%}-->
                  {%endfor%}
             </div>
         </div>
         <div class="row>">
               <div class="col-lg-6" align="center">
                   {%for product in products|slice:"1:2"%}
-<!--                   <h3>{{product.name}}</h3>-->
                   {%if product.foto%}
                     <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="150px">
                   {%else%}
@@ -46,7 +39,6 @@
               </div>
              <div class="col-lg-6" align="center">
                  {%for product in products|slice:"2:3"%}
-<!--                 <h3>{{product.name}}</h3>-->
                  {%if product.foto%}
                  <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="150px">
                  {%else%}
@@ -55,6 +47,5 @@
                  {%endfor%}
              </div>
         </div>
-    </div>
 </div>
 {%endblock%}
