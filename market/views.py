@@ -172,8 +172,8 @@ class FeedbackView(CreateView):
         content = data["text_message"]
         form.save()
         send_mail(subject, content,
-                  'marketstuffdjango@gmail.com',
-                  ['marketstuffdjango@gmail.com'],
+                  'DjangoMarket@yandex.by',
+                  ['DjangoMarket@yandex.by'],
                   fail_silently=False,
                   html_message=msg_html
                   )
