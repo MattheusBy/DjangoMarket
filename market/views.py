@@ -54,7 +54,7 @@ class RegisterUser(CreateView):
         create_city = CustomUser.objects.create(city=data["city"], user_for_city=new_user)
         create_city.save()
         send_mail(subject, content,
-                  'marketstuffdjango@gmail.com',
+                  'DjangoMarket@yandex.by',
                   [data["email"]],
                   fail_silently=False,
                   html_message=msg_html

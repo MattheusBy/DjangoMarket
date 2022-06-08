@@ -135,10 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/catalog/'
 
 # settings for send mails
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'marketstuffdjango@gmail.com'
-EMAIL_HOST_PASSWORD = '4FL6yjQn8WwnCBw'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'DjangoMarket'
+EMAIL_HOST_PASSWORD = 'ndoijqiujsggvbyw'
 EMAIL_USE_TLS = True
 
 REDIS_HOST = "0.0.0.0"
