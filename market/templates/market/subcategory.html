@@ -42,14 +42,16 @@
                                 {% csrf_token %}
                                 <input type="submit" value="Добавить в Избранное" class="btn btn-success btn-sm">
                             </form>
-                                <br>
-                                <br>
+
+                    {%else%}
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     {%endif%}
         </div>
-        {%endfor%}
-        </div>
+     {%endfor%}
     </div>
-    <br>
 </div>
 {%else%}
 <div class="container" style="height:400px">
