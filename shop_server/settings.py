@@ -138,8 +138,8 @@ LOGIN_REDIRECT_URL = '/catalog/'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'DjangoMarket'
-EMAIL_HOST_PASSWORD = 'ndoijqiujsggvbyw'
-EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = 'tciroravfbdmxyzr'
+EMAIL_USE_SSL = True
 
 REDIS_HOST = "0.0.0.0"
 REDIS_PORT = "6379"
