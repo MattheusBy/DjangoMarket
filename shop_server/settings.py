@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'shop_server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Market_django',
-        'USER': 'postgres',
-        'PASSWORD': '08051991Matt',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'd44vg6qa73rnqq',
+        'USER': 'zsvcirtgapivmc',
+        'PASSWORD': 'c37d1aa8047a799e6b26ad367086231a56cfa4fd36c7b3226586365491adbcce',
+        'HOST': 'ec2-3-211-221-185.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
