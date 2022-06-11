@@ -157,5 +157,5 @@ CART_SESSION_ID = 'cart'
 PAYPAL_RECEIVER_EMAIL = 'sb-5xn8l16730462@business.example.com'
 PAYPAL_TEST = True
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = '/home/matvey/DjangoMarket/my_json_key.json'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = '/DjangoMarket/my_json_key.json'
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'google-drive://mattaudia6@gmail.com/1Hd6cPBtWUrYbKS5glGVd5Uxt9Smp158k'
