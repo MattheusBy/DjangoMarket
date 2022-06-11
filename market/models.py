@@ -16,7 +16,7 @@ class Product(models.Model):
     name = models.CharField(max_length=128, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
-    foto = models.ImageField(storage=gd_storage)
+    foto = models.FileField(storage=gd_storage)
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
     subcategory = models.ForeignKey("Subcategory", on_delete=models.CASCADE, blank=True, null=True)
@@ -44,7 +44,7 @@ class Reviews(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
-    logo = models.ImageField(blank=True)
+    logo = models.FileField(storage=gd_storage)
 
     def __str__(self):
         return f"{self.name}"
