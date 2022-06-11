@@ -1,15 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
-from gdstorage.storage import GoogleDriveStorage
+from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
+    GoogleDrivePermissionType
 
-gd_storage = GoogleDriveStorage()
+permission = GoogleDriveFilePermission(
+    GoogleDrivePermissionRole.READER,
+    GoogleDrivePermissionType.USER,
+    "mattaudia6@gmail.com"
+)
+
+gd_storage = GoogleDriveStorage(permissions=(permission,))
 
 
 class Product(models.Model):
     name = models.CharField(max_length=128, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
-    foto = models.FileField(upload_to='products', storage=gd_storage)
+    foto = models.ImageField(storage=gd_storage)
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
     subcategory = models.ForeignKey("Subcategory", on_delete=models.CASCADE, blank=True, null=True)
