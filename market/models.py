@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from gdstorage.storage import GoogleDriveStorage
+
+gd_storage = GoogleDriveStorage()
 
 
 class Product(models.Model):
     name = models.CharField(max_length=128, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
-    foto = models.ImageField(blank=True)
+    foto = models.FileField(upload_to='products', storage=gd_storage)
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
     subcategory = models.ForeignKey("Subcategory", on_delete=models.CASCADE, blank=True, null=True)
@@ -85,7 +88,7 @@ class CustomUser(models.Model):
         return f"{self.city}"
 
 
-class Favorites (models.Model):
+class Favorites(models.Model):
     product_favorite = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
 

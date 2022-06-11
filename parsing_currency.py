@@ -16,7 +16,6 @@ with open("parsed_currency.html", "r") as file:
     src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
-
 dollar_search = soup.find("span", "bl_usd_ex")
 euro_search = soup.find("span", "bl_eur_ex")
 dollar = dollar_search.text
