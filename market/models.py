@@ -53,7 +53,7 @@ class Category(models.Model):
 class Subcategory(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    logo = models.FileField(storage=gd_storage, validators=[FileExtensionValidator(['png'])])
+    logo = models.FileField(storage=gd_storage)
 
     def __str__(self):
         return f"{self.name}"
