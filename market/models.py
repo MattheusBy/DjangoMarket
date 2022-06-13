@@ -1,15 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
-from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
-    GoogleDrivePermissionType
+# from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
+#     GoogleDrivePermissionType
+from gdstorage.storage import GoogleDriveStorage
+# permission = GoogleDriveFilePermission(
+#     GoogleDrivePermissionRole.READER,
+#     GoogleDrivePermissionType.USER,
+# )
 
-permission = GoogleDriveFilePermission(
-    GoogleDrivePermissionRole.READER,
-    GoogleDrivePermissionType.USER,
-)
-
-gd_storage = GoogleDriveStorage(permissions=(permission,))
+gd_storage = GoogleDriveStorage()
 
 
 class Product(models.Model):
