@@ -70,6 +70,7 @@ class AboutMarketView(TemplateView):
     template_name = "market/about_market.html"
 
 
+from django.db.models import Q
 class ProductView(TemplateView):
     template_name = "market/product.html"
 
@@ -82,6 +83,9 @@ class ProductView(TemplateView):
         context["dollar"] = round((product.price / float(dollar)), 2)
         context["cart_product_form"] = CartAddProductForm()
         context["add_to_favorites_form"] = AddToFavoritesForm()
+        favorites_products=list(Favorites.objects.filter(Q(user=request.user) & Q(product_favorite=context["product_pk"])))
+        if len(favorites_products)>0:
+            context["favorites_products"]="Товар в Избранном"
         return self.render_to_response(context)
 
 
@@ -202,10 +206,14 @@ def add_to_favorites(request, product_pk):
     user = request.user
     product = Product.objects.get(pk=product_pk)
     data = {'product_favorite': product.pk,
-            'user': user.pk}
+                'user': user.pk}
     form2 = AddToFavoritesForm(data=data)
     form2.save()
     return redirect('added_to_favorites')
+
+
+class ProductAlreadyFavorites(TemplateView):
+    template_name = "market/product_already_in_favorites.html"
 
 
 def remove_from_favorites(request, product_favorite_pk):

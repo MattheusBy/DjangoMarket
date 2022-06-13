@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
 from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
     GoogleDrivePermissionType
 
 permission = GoogleDriveFilePermission(
     GoogleDrivePermissionRole.READER,
     GoogleDrivePermissionType.USER,
-    "mattaudia6@gmail.com"
+    "djangomarket@djangomarket.iam.gserviceaccount.com"
 )
 
 gd_storage = GoogleDriveStorage(permissions=(permission,))
@@ -53,7 +54,7 @@ class Category(models.Model):
 class Subcategory(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    logo = models.ImageField(blank=True)
+    logo = models.FileField(storage=gd_storage, validators=[FileExtensionValidator(['png'])])
 
     def __str__(self):
         return f"{self.name}"
