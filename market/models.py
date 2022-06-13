@@ -7,7 +7,6 @@ from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, Goo
 permission = GoogleDriveFilePermission(
     GoogleDrivePermissionRole.READER,
     GoogleDrivePermissionType.USER,
-    "djangomarket@djangomarket.iam.gserviceaccount.com"
 )
 
 gd_storage = GoogleDriveStorage(permissions=(permission,))
