@@ -3,14 +3,14 @@
 
 {% block content %}
 <title>Акции</title>
-<dev class="container-fluid">
+<div class="container-fluid" style="height:350px">
     <h2 align="center">Акции</h2>
-    <dev class="row">
-        <dev class="col-lg-6">
-            <h1> {{stock.name}}</h1>
-            <h4 class="description"><br>{{stock.description}}</h4>
-        </dev>
-    </dev>
-</dev>
+    <div class="row">
+        <div class="col-lg-6">
+            <h3> {{stock.name}}</h3>
+            <p class="description"><br>{{stock.description}}</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

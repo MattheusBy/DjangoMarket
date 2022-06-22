@@ -3,60 +3,70 @@
     <head>
         <meta charset="utf-8">
             <link rel="shortcut icon" type="image/png" href="{% static 'foto/logo.png' %}"/>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial scale=1">
     </head>
     <header>
-        <nav class="navbar navbar-default" >
-            <div class="container-fluid" style="background-color:#00e7de; width:100%">
-                <div class="navbar-header">
-                    <a href="{%url 'index'%}" class="navbar-brand"><img src="{% static 'foto/logo.png'%}" alt="img" width="20"></a>
-                </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <ul class="nav navbar-nav">
-                                    <li class="main"><a href="{%url 'catalog'%}">Каталог</a></li>
-                                    <li class="main"><a href="{% url 'stocks'%}">Акции</a></li>
-                                    <li class="main"><a href="{% url 'about_market' %}">О магазине</a></li>
-                                    <li class="main"><a href="{% url 'discount' %}">Бонусная программа</a></li>
-                                    <li class="main"><a href="{% url 'delivery' %}">Доставка</a></li>
-                                    <li class="main"><a href="{% url 'feedback'%}">Обратная связь</a></li>
-                                    <li class="main"><a href="{% url 'search'%}">Поиск</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg"> {%if not user.is_authenticated%}
-                            <ul class="nav navbar-nav">
-                                <li class="main"><a href="{%url 'login'%}">Войти</a></li>
-                                <li class="main"><a href="{%url 'register'%}">Зарегистрироваться</a></li>
-                            </ul>
-                        </div>
-                        {%else%}
-                        <div class="col-lg">
-                            <ul class="nav navbar-nav">
-                                <li class="main"><a href="{%url 'login'%}"><strong>{{user.username}}</strong></a></li>
-                                <li class="main"><a href="{%url 'favorites'%}">Избранное</a></li>
-                                <li class="main"><a href="{%url 'cart_detail'%}">Корзина</a></li>
-                                <li class="main"><a href="{%url 'logout'%}">Выйти</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {%endif%}
-    </header>
-    <div class = 'col-lg-12' style="height:400px;overflow:auto">
-        {% block content%}
+        <div class="bg-image" style="background-image: url({% static 'foto/Blue-Textured-Wallpapers-HD-Free-Download.jpg'%});
+    height: 100px;padding:0px;width:100%">
+            <br>
+        <div class="row flex-nowrap justify-content-between align-items-center" style="text-align: center;">
+
+          <div class="col-4 text-center">
+
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="text-muted" href="#">
+
+            </a>
+
+          </div>
+        </div>
+
+      <div class="nav-scroller py-1 mb-2 ">
+        <nav class="nav d-flex justify-content-between">
+            &nbsp
+            <a href="{% url 'index'%}"><img src="{% static 'foto/logo.png'%}" width="30px" alt="foto"></a>
+          <a class="p-1 text-muted" href="{%url 'catalog'%}"><b style='color:#FFFFFF' >Каталог</b></a>
+          <a class="p-1 text-muted" href="{% url 'stocks'%}"><b style='color:#FFFFFF'>Акции</b></a>
+          <a class="p-1 text-muted" href="{% url 'about_market'%}"><b style='color:#FFFFFF'>О магазине</b></a>
+          <a class="p-1 text-muted" href="{% url 'discount' %}"><b style='color:#FFFFFF'>Бонусная программа</b></a>
+          <a class="p-1 text-muted" href="{% url 'delivery' %}"><b style='color:#FFFFFF'>Доставка</b></a>
+          <a class="p-1 text-muted" href="{% url 'feedback'%}"><b style='color:#FFFFFF'>Обратная связь</b></a>
+          <a class="p-1 text-muted" href="{% url 'search'%}"><b style='color:#FFFFFF'>Поиск</b> </a>
+          <div class="vr" style='color:#FFFFFF'></div>
+            {%if not user.is_authenticated%}
+           <a type="button" class="btn btn-outline-light btn-sm" href="{%url 'login'%}">Войти</a>
+           <a type="button" class="btn btn-outline-light btn-sm" href="{%url 'register'%}">Регистрация</a>&nbsp;
+            {%else%}
+            <div class="vr"></div>
+            <a class="p-1 text-muted" href="{%url 'login'%}"><b style='color:#FFFFFF'>{{user.username}}</b></a>
+            <a class="p-1 text-muted" href="{%url 'favorites'%}"><b style='color:#FFFFFF'>Избранное</b></a>
+            <a class="p-1 text-muted" href="{%url 'cart_detail'%}"><b style='color:#FFFFFF'>Корзина</b></a>
+            <a type="button" class="btn btn-outline-light btn-sm" href="{%url 'logout'%}">Выйти</a>&nbsp;
+            {%endif%}
+        </nav>
+      </div>
+        </div>
+</header>
+    <br>
+    <br>
+    <body style="background: rgb(129,168,245);
+background: linear-gradient(90deg, rgba(129,168,245,1) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 90%, rgba(129,168,245,1) 100%);">
+<div class="container-fluid" >
+
+    {% block content%}
 
 
         {% endblock %}
-    </div>
-</nav>
-        </body>
+</div>
+    </body>
+    <br>
     <footer>
          <div class="container-fluid" style="height: 10%">
+              <hr align="center" width="1240" color="Red" />
                     <div class="row">
                         <div class="col-lg-3">
                             <h3><strong>Контакты:</strong><br></h3>
@@ -65,7 +75,6 @@
                             <p style="align: right">Адрес: г. Минск, ул. Лесная, 16</p>
                         </div>
                         <div class="col-lg-3" align="center">
-                            <br>
                             <h4><strong>Мы в социальных сетях</strong></h4>
                             <a href="#"><img src="{% static 'foto/gmail.png'%}" alt="img" width="25"></a>&nbsp&nbsp
                             <a href="#"><img src="{% static 'foto/telegram.png'%}" alt="img" width="25"></a>&nbsp&nbsp
@@ -76,9 +85,9 @@
                                 <iframe frameborder="0" height="145" marginheight="0" marginwidth="0" scrolling="no" src="https://admin.myfin.by/outer/informer/minsk/sub/small" width="180"></iframe>
                         </div>
                         <div class="col-lg-3" align="center">
-                            <h4><img src="{% static 'foto/location.png'%}" alt="img" width="20"> г. {{city}}</h4>
-                            <h4><img src="{% static 'foto/real_temp.png'%}" alt="img" width="20"> {{real_temperature}} °C </h4>
-                            <h4><img src="{% static 'foto/temp_feels_like.png'%}" alt="img" width="20"> {{feels_like_temperature}} °C</h4>
+                            <h5><img src="{% static 'foto/location.png'%}" alt="img" width="20"> г. {{city}}</h5>
+                            <h5><img src="{% static 'foto/real_temp.png'%}" alt="img" width="20"> {{real_temperature}} °C </h5>
+                            <h5><img src="{% static 'foto/temp_feels_like.png'%}" alt="img" width="20"> {{feels_like_temperature}} °C</h5>
                         </div>
                     </div>
          </div>
