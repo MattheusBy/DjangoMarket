@@ -8,9 +8,9 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" align="center">
             {%if product.foto%}
-             <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="400px" align="center">
+             <img src='{{MEDIA_ROOT}}{{product.foto.url}}' alt="foto" width="400px" >
             {%else%}
             <br>
             <h4 align="center">Изображение отсутствует</h4>
@@ -19,12 +19,12 @@
         <div class="col-lg-6">
             <h5 align="left" class="description"><b>Описание:<br></b><br>{{product.description}}</h5>
             <br>
-            <h4 class="price"><strong>Цена:{{product.price}} рублей</strong> <small float="right">${{dollar}}/€{{euro}}</small><h4 align="right" class="price"><small> </small></h4></h4><br>
+            <h4 class="price"><strong>Цена: {{product.price}} рублей</strong> <small float="right">${{dollar}}/€{{euro}}</small><h4 align="right" class="price"><small> </small></h4></h4><br>
             <h5 style="text-align:left"><b>Оценка покупателей: {{product.marks}}</b></h5>
             {%if product.count%}
-            <h4 align="left"><strong>Количество на складе: </strong>{{product.count}}</h4>
+            <h5 align="left"><strong>Количество на складе: </strong>{{product.count}}</h5>
             {%else%}
-            <h4>Данный товар отсутствует на складе</h4>
+            <h5>Данный товар отсутствует на складе</h5>
             <a class="btn btn-info btn-xs" href="#"><i class="glyphicon glyphicon-bullhorn"></i> Сообщить о поступлении</a><br>
             <br>
             {%endif%}
@@ -53,7 +53,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-           <h3 align="center"><b>Отзывы о товаре:</b></h3>
+           <h4 align="center"><b>Отзывы о товаре:</b></h4>
         {%if reviews%}
         {%for review in reviews%}
        <div class="col-lg-4">
@@ -64,7 +64,7 @@
        </div>
     {%endfor%}
     {%else%}
-    <h4 align="center">У этого товара пока нет ни одного отзыва</h4>
+    <h6 align="center">У этого товара пока нет ни одного отзыва</h6>
     {%endif%}
        </div>
     </div>

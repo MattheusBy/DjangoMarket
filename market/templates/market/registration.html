@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<div class = 'col-lg' style="overflow: auto">
+<div class = 'col-lg-12' style="overflow: auto">
     <title>Регистрация</title>
     <form method="post" style="height: 800px;">
     {% csrf_token %}
@@ -53,7 +53,7 @@
               {{ form.captcha }}
                     </div>
                         <div align="center" style="position:center">
-                        <input type="submit" value="Зарегистрироваться"/><input align="center" type="hidden" name="next" value="{{ next }}" />
+                        <input class="btn btn-success btn-sm" type="submit" value="Зарегистрироваться"/><input align="center" type="hidden" name="next" value="{{ next }}" />
                         </div>
               </div>
             </div>
