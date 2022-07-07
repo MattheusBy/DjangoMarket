@@ -20,7 +20,7 @@ def order_create(request):
                                          quantity=item['quantity'])
             cart.clear()
             send_mail("Вы успешно оформили заказ!", "Ваш заказ будет доставлен в ближайшее время",
-                      'marketstuffdjango@gmail.com',
+                      'DjangoMarket@yandex.by',
                       [form.instance.email],
                       fail_silently=False, )
 

@@ -6,13 +6,14 @@ from django.db.models import Max
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, DeleteView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
 from cart.forms import CartAddProductForm
-from market.forms import ReviewCreateForm, UserCreateForm, FeedbackForm
-from market.models import Product, Reviews, Category, Stocks, Subcategory, CustomUser
+from coupons.models import Coupon
+from market.forms import ReviewCreateForm, UserCreateForm, FeedbackForm, AddToFavoritesForm
+from market.models import Product, Reviews, Category, Stocks, Subcategory, CustomUser, Favorites
 from parsing_currency import euro, dollar
 
 
@@ -53,7 +54,7 @@ class RegisterUser(CreateView):
         create_city = CustomUser.objects.create(city=data["city"], user_for_city=new_user)
         create_city.save()
         send_mail(subject, content,
-                  'marketstuffdjango@gmail.com',
+                  'DjangoMarket@yandex.by',
                   [data["email"]],
                   fail_silently=False,
                   html_message=msg_html
@@ -69,6 +70,9 @@ class AboutMarketView(TemplateView):
     template_name = "market/about_market.html"
 
 
+from django.db.models import Q
+
+
 class ProductView(TemplateView):
     template_name = "market/product.html"
 
@@ -80,6 +84,12 @@ class ProductView(TemplateView):
         context["euro"] = round((product.price / float(euro)), 2)
         context["dollar"] = round((product.price / float(dollar)), 2)
         context["cart_product_form"] = CartAddProductForm()
+        context["add_to_favorites_form"] = AddToFavoritesForm()
+        if request.user.is_authenticated:
+            favorites_products = list(
+                Favorites.objects.filter(Q(user=request.user) & Q(product_favorite=context["product_pk"])))
+            if len(favorites_products) > 0:
+                context["favorites_products"] = "Товар в Избранном"
         return self.render_to_response(context)
 
 
@@ -119,10 +129,10 @@ class ProductCategoryView(TemplateView):
 
 
 class StocksView(ListView):
-    model = Stocks
+    model = Coupon
     template_name = "market/stocks.html"
-    context_object_name = "stocks"
-    queryset = Stocks.objects.all()
+    context_object_name = "coupon"
+    queryset = Coupon.objects.all()
 
 
 class StocksInfoView(TemplateView):
@@ -130,7 +140,7 @@ class StocksInfoView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        context["stock"] = Stocks.objects.get(pk=context["stocks_pk"])
+        context["coupon"] = Coupon.objects.get(pk=context["coupon_pk"])
         return self.render_to_response(context)
 
 
@@ -149,7 +159,7 @@ class AddedReviewView(TemplateView):
 class AddReview(FormView):
     form_class = ReviewCreateForm
     success_url = reverse_lazy("added_review")
-    template_name = "market/added_review.html"
+    template_name = "market/add_review.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -170,8 +180,8 @@ class FeedbackView(CreateView):
         content = data["text_message"]
         form.save()
         send_mail(subject, content,
-                  'marketstuffdjango@gmail.com',
-                  ['marketstuffdjango@gmail.com'],
+                  'DjangoMarket@yandex.by',
+                  ['DjangoMarket@yandex.by'],
                   fail_silently=False,
                   html_message=msg_html
                   )
@@ -180,7 +190,6 @@ class FeedbackView(CreateView):
 
 class FeedbackDone(TemplateView):
     template_name = "market/feedback_done.html"
-
 
 
 class SearchResultsView(ListView):
@@ -195,3 +204,40 @@ class SearchResultsView(ListView):
 
 class SearchView(TemplateView):
     template_name = "market/search.html"
+
+
+def add_to_favorites(request, product_pk):
+    user = request.user
+    product = Product.objects.get(pk=product_pk)
+    data = {'product_favorite': product.pk,
+            'user': user.pk}
+    form2 = AddToFavoritesForm(data=data)
+    form2.save()
+    return redirect('added_to_favorites')
+
+
+class ProductAlreadyFavorites(TemplateView):
+    template_name = "market/product_already_in_favorites.html"
+
+
+def remove_from_favorites(request, product_favorite_pk):
+    user_favorites = Favorites.objects.filter(user=request.user).get(product_favorite=product_favorite_pk)
+    user_favorites.delete()
+    return redirect("removed_favorite")
+
+
+class RemovedFavorite(TemplateView):
+    template_name = "market/removed_favorite.html"
+
+
+class AddedToFavorites(TemplateView):
+    template_name = 'market/added_to_favorites.html'
+
+
+class FavoritesView(ListView):
+    model = Favorites
+    template_name = "market/favorites.html"
+    context_object_name = "favorites"
+
+    def get_queryset(self):
+        return Favorites.objects.filter(user=self.request.user)

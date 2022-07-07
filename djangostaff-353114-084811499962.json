@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "djangostaff-353114",
+  "private_key_id": "0848114999621c02cf848b0cdc941f424f24ace6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDY1YZLlWArhHB7\neg0GMstW/1FcGHey1PGlAC8VkezbrzDFRnPdJODqHozCiMYa6xvOjmeASqsJEbPz\nAgpER6wmHf50YWDygvY0b8nCCPDI6EtBmEiAz6AWC2Qcyp3tghzGXCXgLwSmMMZw\n6dESCR8Xf8zQCDq7b0IduYQN+Iyueu3uHC3/+bShKeUGdHD6P3NmvPB0S0abbvcp\ne8Aiu59OvlrFGQlV2X5/rDX2u1IJ+QQgWHYkuoki9mdo3MjZAINq47tqWCm7cR3X\nWvqcSdX07N7t5zEl94Yx9HGyXQLr0q+JnZcmuAkN0YqNsQXRO51FyQr2UXX5C8AK\n4gDbMRW9AgMBAAECggEAH1PGKdBkixUA3U4WaKFZEHIl0oz0akFqwiCDLPYexuSK\nQs45eidUWW7dflOdb5EtPMwFNxtSl6ZXndHbIt9KB13JAA57n739DTljaGW7SAOL\nr+fs/bNBmT2/EovRglmMh7oTfM6+OLaOTQzy+EyaEd6UfC/cMG1UG5BMfGo/BQwY\nivOXcESdub1miEhNsnLd8WNsZCp0IY+1JWp2aC5Bg5CSTv6OWa8+3DJX5fv6SwJk\n/2c+UWspcd6Gdfvp4gFcDKtZNV3FTJmMXKJnJ3Hnp2ZB7M44IwvvglN3MbpNc+Jz\n37WObZ1JoG5SgAwChqXXIhfC8TFfwuEkH3m+znDiQQKBgQDzpWNoXUXcrZHzg3mo\nDOzzTgcXg5fisEvLXtgOTUFH7sJ0I2UKsZRuJdufsgZ5mL8vOWnVXRlCzqKC+fHG\nOVW3kHYuQ7eBTQ7bdte11sWmRmDPt2zSxHyYwxZzc3o2u5/w+Q62+5mZ7PPEKPGL\n39GYyxnftfTq9rHyH2ovqtey4QKBgQDj1BuDoOO57kp2IwQj5lhQ9s89u1juEFFR\nUMtPBfNr3D5qVzhDlF6SdFwRgf06xrmz+fkjs8Ig3mgUfcc6+JXaylf6qJTg+4xX\n66pGdylW1jMEi4TfxdN8V/sjdPXF0OUx+ziVU0pBLE3psaQV+5/Mz9Ogns6IRYbj\ndxPFxjJaXQKBgQDGrj1r43OOyrNTwgi4syGeHijGUfbPUjfcdVD2CKWNRPOoxRwm\nJj0FvTVk+kUxbw+oMMdOyAZLZjk7WRqBLEvrzo+wlmPTusS8ziKFE8hFGOrlN4w0\nKyn3YE60gpxMeZ+pX09Sg8Tzsjft4/1ktHU0hZppxPUdjWH6MQfkKwqNwQKBgAYF\nYQTFh78uMQGWQ1G/kK3zF98FyH/iJoQDopvgCGLdWzjsPSxsC2PLd3NvAAZBoj7D\naHYtFgBQYGfKOy2vzCYQGusg8W5Qt5DLRaC/HXSSDJ8eINDZJZGvsY9qU+R6dNQx\nU3l+zgOS7Cw06aU7FSoQhANGryaiz8HLL9aWOlZxAoGBAMFg93FpMx7NhHQOvzoc\nURYpeKrpUEfb4CWvTW3dtkyECMv6bgrCYXEabu6uN5vYHj8euoNQVUA9JdWwHZtA\nz2N3NKI0bSqWZGC0apPXVjCpetz1wP3nsHwOF425UtwrDyf5NAJ5QITjB47yj2EO\nCSu94N5IOnX4HMO0kFT0hJNC\n-----END PRIVATE KEY-----\n",
+  "client_email": "djangostuff@djangostaff-353114.iam.gserviceaccount.com",
+  "client_id": "101236059390899448428",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/djangostuff%40djangostaff-353114.iam.gserviceaccount.com"
+}

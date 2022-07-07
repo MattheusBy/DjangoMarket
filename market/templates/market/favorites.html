@@ -1,0 +1,51 @@
+{%extends 'market/base.html'%}
+{%load static%}
+
+{%block content%}
+<title>Избранное</title>
+{%if favorites%}
+<h2 align="center">Избранное</h2>
+{%for favorite in favorites%}
+<br>
+    <div class="row">
+        <div class="col-lg-6" align="left">
+             <h4><a href="{%url 'product' product_pk=favorite.product_favorite.pk%}">{{favorite.product_favorite.name}}</a>
+            <h5>{{favorite.product_favorite.description|slice:":256"}}...</h5>
+            <a href="{%url 'product' product_pk=favorite.product_favorite.pk%}">Подробнее</a>
+        </div>
+        <div class="col-lg-4" align="center">
+                <img src='{{MEDIA_ROOT}}{{favorite.product_favorite.foto.url}}' alt="foto" width="200px"><br>
+                <br>
+                <br>
+            </div>
+        <div class="col-lg-2" align="left">
+                <h4>Цена: <strong>{{favorite.product_favorite.price}} BYN<div>
+                    {%if user.is_authenticated%}
+                        {%if favorite.product_favorite.count > 0%}
+                           <img src="{% static 'foto/green_point.png'%}" width="10%"> В наличии
+                            <br>
+                            <br>
+                        <form action="{% url 'cart_add' favorite.product_favorite.pk %}" method="post">
+                                    {{ cart_product_form }}
+                                    {% csrf_token %}
+                                    <input type="submit" value="Добавить в корзину" class="btn btn-success btn-sm">
+                        </form>
+                        {%else%}
+                            <img src="{% static 'foto/red_point.png'%}" width="6%"> Нет в наличии
+                            <br>
+                            <br>
+                        {%endif%}
+                    {%endif%}
+                    <a class="btn btn-danger btn-sm" href="{%url 'remove_favorite' product_favorite_pk=favorite.product_favorite.pk%}"> Удалить из Избранного </a>
+                </div>
+        </div>
+    </div>
+{%endfor%}
+{%else%}
+<div class="row">
+        <div class="col-lg-12" align="center">
+            <h3>У Вас нет избранных товаров</h3>
+        </div>
+</div>
+{%endif%}
+{%endblock%}

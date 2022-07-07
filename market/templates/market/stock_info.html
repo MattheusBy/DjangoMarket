@@ -3,14 +3,20 @@
 
 {% block content %}
 <title>Акции</title>
-<dev class="container-fluid">
+<div class="container-fluid" style="height:350px">
     <h2 align="center">Акции</h2>
-    <dev class="row">
-        <dev class="col-lg-6">
-            <h1> {{stock.name}}</h1>
-            <h4 class="description"><br>{{stock.description}}</h4>
-        </dev>
-    </dev>
-</dev>
+    <div class="row">
+        <div class="col-lg-6">
+            <h3> {{coupon.code}}</h3>
+            {%if coupon.active is True%}
+            <h6>Активен</h6>
+            {%else%}
+            <h6>Недействителен</h6>
+            <h5>Промокод дает скидку {{coupon.discount}}% на все товары! </h5>
+            {%endif%}
+            <h5>Промокод дает скидку {{coupon.discount}}% на все товары! </h5>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -5,39 +5,40 @@
 
 <title>Каталог</title>
 <div class="container-fluid" style="height:400 px">
-    <h2 align="center">Категории товаров</h2>
+    <h2 align="center">Категории товаров</h2><br>
     <div class="row">
         <div class="col-lg-4" align="center">
                 {%for category in categories|slice:"0:3"%}
                 <h3>{{category.name}}</h3>
                 {%if category.logo%}
-                    <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                    <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="100px">
                 <br>
                 <br>
                 {%endif%}
-                <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                <a class="btn btn-success btn-sm" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                <br>
                 {%endfor%}
         </div>
         <div class="col-lg-4" align="center">
             {%for category in categories|slice:"3:6"%}
             <h3>{{category.name}}</h3>
                     {%if category.logo%}
-                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="100px">
                     <br>
                     <br>
                     {%endif%}
-                    <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                    <a class="btn btn-success btn-sm" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
                     {%endfor%}
             </div>
             <div class="col-lg-4" align="center">
                 {%for category in categories|slice:"6:"%}
                     <h3>{{category.name}}</h3>
                     {%if category.logo%}
-                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="70px">
+                        <img src="{{MEDIA_ROOT}}{{category.logo.url}}" alt="foto" width="100px">
                     <br>
                     <br>
                     {%endif%}
-                    <a class="btn btn-success" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
+                    <a class="btn btn-success btn-sm" href="{%url 'show_category' category_pk=category.pk%}">Перейти в категорию</a>
                     {%endfor%}
             </div>
         </div>

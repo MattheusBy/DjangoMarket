@@ -1,0 +1,8 @@
+{%extends 'market/base.html'%}
+
+{%block content%}
+<form action="{% url 'add_to_favorites' product_pk=product.pk %}" method="post">
+{{forms.add_to_favorites}}
+{% csrf_token %}
+</form>
+{%endblock%}

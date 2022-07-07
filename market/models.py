@@ -1,12 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
+# from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
+#     GoogleDrivePermissionType
+from gdstorage.storage import GoogleDriveStorage
+# permission = GoogleDriveFilePermission(
+#     GoogleDrivePermissionRole.READER,
+#     GoogleDrivePermissionType.USER,
+# )
+
+gd_storage = GoogleDriveStorage()
 
 
 class Product(models.Model):
     name = models.CharField(max_length=128, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
-    foto = models.ImageField(blank=True)
+    foto = models.FileField(storage=gd_storage)
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
     subcategory = models.ForeignKey("Subcategory", on_delete=models.CASCADE, blank=True, null=True)
@@ -34,7 +44,7 @@ class Reviews(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
-    logo = models.ImageField(blank=True)
+    logo = models.FileField(storage=gd_storage)
 
     def __str__(self):
         return f"{self.name}"
@@ -43,7 +53,7 @@ class Category(models.Model):
 class Subcategory(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    logo = models.ImageField(blank=True)
+    logo = models.FileField(storage=gd_storage)
 
     def __str__(self):
         return f"{self.name}"
@@ -74,7 +84,7 @@ class Feedback(models.Model):
     text_message = models.TextField()
 
     def __str__(self):
-        return f"{self.email_sender}{self.topic}{self.email_recipient}{self.text_message}{self.phone_number}"
+        return f"{self.email_sender}{self.topic}{self.email_recipient}{self.text_message}"
 
 
 class CustomUser(models.Model):
@@ -83,3 +93,11 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return f"{self.city}"
+
+
+class Favorites(models.Model):
+    product_favorite = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product}"

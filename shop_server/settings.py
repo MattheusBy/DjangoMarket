@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'payment',
     'django_celery_beat',
+    'gdstorage',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,14 +77,20 @@ WSGI_APPLICATION = 'shop_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd44vg6qa73rnqq',
+        'USER': 'zsvcirtgapivmc',
+        'PASSWORD': 'c37d1aa8047a799e6b26ad367086231a56cfa4fd36c7b3226586365491adbcce',
+        'HOST': 'ec2-3-211-221-185.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
-import dj-database-url
 
-db_from_env = dj-database-url.config()
-DATABASE['default'].update(db_from_env)
+
+import dj_database_url
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -128,11 +136,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/catalog/'
 
 # settings for send mails
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'marketstuffdjango@gmail.com'
-EMAIL_HOST_PASSWORD = '4FL6yjQn8WwnCBw'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'DjangoMarket'
+EMAIL_HOST_PASSWORD = 'tciroravfbdmxyzr'
+EMAIL_USE_SSL = True
 
 REDIS_HOST = "0.0.0.0"
 REDIS_PORT = "6379"
@@ -148,3 +156,6 @@ CART_SESSION_ID = 'cart'
 
 PAYPAL_RECEIVER_EMAIL = 'sb-5xn8l16730462@business.example.com'
 PAYPAL_TEST = True
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'djangomarket-83c36b901f42.json'
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'google-drive://mattaudia6@gmail.com/1-yqTNulOMPYfne61823Ho_vn2smREDxE'

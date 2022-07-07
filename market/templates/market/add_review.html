@@ -2,21 +2,27 @@
 {%load static%}
 
 {%block content%}
-<title>Отзыв</title>
 {%if user.is_authenticated%}
-<form method="post">
+<form method="post" style="height: 800px;">
     {% csrf_token %}
-    <table align="center">
-        <tr>
-            <td>{{ form.text.label_tag }}</td>
-            <td>{{ form.text }}</td>
-        </tr><tr>
-            <td>{{ form.mark.label_tag }}</td>
-            <td>{{ form.mark}}</td>
-        </tr>
-    </table>
-     <div align="center" style="position:center">
-    <input type="submit" value="Отправить"/><input align="center" type="hidden" name="next" value="{{ next }}" />
+    <div class="container-fluid">
+        <div class="container-fluid">
+        <div class="col-lg-3" align="center">
+        </div>
+        <div class="col-lg-6" align="center">
+            <div class="justify-content-md-center">
+                <label form="text" class="control-label">Ваш отзыв</label>
+                <input type="username" class="form-control" placeholder="Текст отзыва"{{ form.text }}
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Ваша оценка</label>
+                {{ form.mark }}
+            </div>
+            <div align="center" style="position:center">
+                <input type="submit" value="Отправить"/><input align="center" type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </div>
     </div>
 </form>
 {%else%}

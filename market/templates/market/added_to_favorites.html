@@ -1,0 +1,12 @@
+{% extends 'market/base.html'%}
+{%load static%}
+
+
+{%block content%}
+<title>Избранное</title>
+<div class="container-fluid" align="center" style="height:500px">
+    <h3 align="center">Вы добавили товар в Избранное</h3>
+    <a class="btn btn-success btn-sm" href="{%url 'favorites'%}">Перейти в Избранное</a>
+    <a class="btn btn-success btn-sm" href="{%url 'catalog'%}">Вернуться в Каталог</a>
+</div>
+{%endblock%}

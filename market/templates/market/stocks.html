@@ -7,14 +7,9 @@
     <h2 align="center">Акции</h2>
     <div class="row">
         <div class="col-lg-6" align="left">
-            {%for stock in stocks|slice:":3"%}
-                <h3>{{stock.name}}</h3>
-                <a href="{%url 'stocks_info' stocks_pk=stock.pk%}">Подробнее</a>
-              {%endfor%}
-        </div><div class="col-lg-6" align="center">
-            {%for stock in stocks|slice:"3:"%}
-                <h3>{{stock.name}}</h3>
-                <a href="#">Подробнее</a>
+            {%for coupon in coupons%}
+                <h3>{{coupon.code}}</h3>
+                <a href="{%url 'stocks_info' coupon_pk=coupon.pk%}">Подробнее</a>
             {%endfor%}
         </div>
     </div>

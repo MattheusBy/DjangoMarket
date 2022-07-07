@@ -7,7 +7,7 @@
             <div class="col-lg-6">
                     {% for item in cart %}
                 <h4><strong>{{ item.product.name }}</strong></h4><br>
-                <img src='{{MEDIA_ROOT}}{{item.product.foto.url}}' alt="foto" width="150px">
+                <div class="container" align="center"> <img src='{{MEDIA_ROOT}}{{item.product.foto.url}}' alt="foto" width="150px"></div>
                 <h5> Количество: {{ item.quantity }}</h5>
                 <h5> Цена: {{ item.total_price }} BYN</h5>
                     {% endfor %}
