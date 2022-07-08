@@ -8,7 +8,7 @@ from shop_server.celery import app
 
 @app.task
 def mass_send_mail():
-    list_recipients = ["matveymolchanov@mail.ru",]
+    list_recipients = []
     for user in User.objects.all():
         list_recipients.append(user.email)
     msg_html = render_to_string('market/mass_mail.html')
