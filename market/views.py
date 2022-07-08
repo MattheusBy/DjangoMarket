@@ -47,7 +47,7 @@ class RegisterUser(CreateView):
     def form_valid(self, form):
         msg_html = render_to_string('market/register_done_mail.html')
         data = form.data
-        subject = f'Сообщение от marketstuffdjango@gmail.com.Тема: Регистрация на сайте'
+        subject = f'Сообщение от DjangoMarket@yandex.by.Тема: Регистрация на сайте'
         content = "Регистрация прошла успешно!"
         form.save()
         new_user = User.objects.get(username=data["username"])
