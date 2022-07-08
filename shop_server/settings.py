@@ -10,10 +10,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-li*=-*aixz#q6!v^227+0f(rty0-m_(&*12b@uptiu_b5gy_xu'
+SECRET_KEY = '__secret_key__'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'shop_server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd44vg6qa73rnqq',
-        'USER': 'zsvcirtgapivmc',
-        'PASSWORD': 'c37d1aa8047a799e6b26ad367086231a56cfa4fd36c7b3226586365491adbcce',
-        'HOST': 'ec2-3-211-221-185.compute-1.amazonaws.com',
+        'NAME': 'hidden',
+        'USER': 'hidden',
+        'PASSWORD': 'hidden',
+        'HOST': 'hidden',
         'PORT': '5432',
     }
 }
@@ -139,7 +139,7 @@ LOGIN_REDIRECT_URL = '/catalog/'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'DjangoMarket'
-EMAIL_HOST_PASSWORD = 'tciroravfbdmxyzr'
+EMAIL_HOST_PASSWORD = 'hidden'
 EMAIL_USE_SSL = True
 
 REDIS_HOST = "0.0.0.0"
@@ -154,8 +154,8 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CART_SESSION_ID = 'cart'
 
-PAYPAL_RECEIVER_EMAIL = 'sb-5xn8l16730462@business.example.com'
+PAYPAL_RECEIVER_EMAIL = 'hidden'
 PAYPAL_TEST = True
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'djangomarket-83c36b901f42.json'
-GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'google-drive://mattaudia6@gmail.com/1-yqTNulOMPYfne61823Ho_vn2smREDxE'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'hidden'
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'hidden'
