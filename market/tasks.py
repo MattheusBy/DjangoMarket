@@ -14,7 +14,7 @@ def mass_send_mail():
     msg_html = render_to_string('market/mass_mail.html')
     subject = "Маркет.бай"
     message = "Найдите все интересующие Вас товары"
-    from_email = "marketstuffdjango@gmail.com"
+    from_email = "DjangoMarket@yandex.by"
     send_mail(subject,
               message,
               from_email,
