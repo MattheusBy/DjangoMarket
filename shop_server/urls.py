@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from market.views import CatalogView
+from market.views import CatalogView, IndexView
 from django.conf.urls.static import static
 from shop_server import settings
 
 urlpatterns = [
+    path('', IndexView.as_view()),
     path('catalog/', CatalogView.as_view()),
     path('payment/', include('payment.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
