@@ -1,5 +1,4 @@
 import random
-
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Max
@@ -9,15 +8,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView, DeleteView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-
 from cart.forms import CartAddProductForm
 from coupons.models import Coupon
 from market.forms import ReviewCreateForm, UserCreateForm, FeedbackForm, AddToFavoritesForm
 from market.models import Product, Reviews, Category, Stocks, Subcategory, CustomUser, Favorites
 from parsing_currency import euro, dollar
-
+from django.db.models import Q
 
 class IndexView(ListView):
+    """ Displays start page. It shows three random products from catalog"""
     model = Product
     template_name = "market/index.html"
     context_object_name = "products"
@@ -30,16 +29,20 @@ class IndexView(ListView):
 
 
 def login(request):
+    """ Function for login """
     if request.method == "GET":
         return redirect("accounts/login.html")
 
 
 def logout(request):
+    """ Function for logout """
     if request.method == "GET":
         return redirect("accounts/logged_out.html")
 
 
 class RegisterUser(CreateView):
+    """ Class for register. Shows RegisterForm and create new user 
+    for app.After successful register sends letter to email """
     form_class = UserCreateForm
     template_name = 'market/registration.html'
     success_url = reverse_lazy("registration_done")
@@ -63,17 +66,18 @@ class RegisterUser(CreateView):
 
 
 class Register_done(TemplateView):
+    """ View template after successful register"""
     template_name = "market/registration_done.html"
 
 
 class AboutMarketView(TemplateView):
+    """ View template with description about shop"""
     template_name = "market/about_market.html"
 
 
-from django.db.models import Q
-
-
 class ProductView(TemplateView):
+    """ View all information about each product: price,image,description,reviews. 
+    Provides to add product in cart, favorites"""
     template_name = "market/product.html"
 
     def get(self, request, *args, **kwargs):
@@ -94,6 +98,7 @@ class ProductView(TemplateView):
 
 
 class CatalogView(ListView):
+    """ Views all categories of products"""
     model = Category
     template_name = "market/catalog.html"
     context_object_name = "categories"
@@ -101,6 +106,7 @@ class CatalogView(ListView):
 
 
 class СategoryView(ListView):
+    """ Views all subcategories of products for each category"""
     model = Subcategory
     template_name = "market/category.html"
     context_object_name = "subcategories"
@@ -110,6 +116,7 @@ class СategoryView(ListView):
 
 
 class SubcategoryView(ListView):
+    """ Shows all subcategories for each category"""
     model = Subcategory
     template_name = "market/subcategory.html"
     context_object_name = "products"
@@ -119,6 +126,7 @@ class SubcategoryView(ListView):
 
 
 class ProductCategoryView(TemplateView):
+    """ Shows all products for each subcategory """
     template_name = "market/category.html"
 
     def get(self, request, *args, **kwargs):
@@ -129,6 +137,7 @@ class ProductCategoryView(TemplateView):
 
 
 class StocksView(ListView):
+    """ Displays all current stocks """
     model = Coupon
     template_name = "market/stocks.html"
     context_object_name = "coupon"
@@ -136,6 +145,7 @@ class StocksView(ListView):
 
 
 class StocksInfoView(TemplateView):
+    """ Provides information for stock """
     template_name = "market/stock_info.html"
 
     def get(self, request, *args, **kwargs):
@@ -145,18 +155,22 @@ class StocksInfoView(TemplateView):
 
 
 class DeliveryView(TemplateView):
+    """ Shows delivery terms """
     template_name = "market/delivery.html"
 
 
 class DiscountView(TemplateView):
+    """ Views information about disconts """
     template_name = "market/discount.html"
 
 
 class AddedReviewView(TemplateView):
+    """ Shows template after successful add review """
     template_name = "market/added_review.html"
 
 
 class AddReview(FormView):
+    """ Provides possibility for add review """
     form_class = ReviewCreateForm
     success_url = reverse_lazy("added_review")
     template_name = "market/add_review.html"
@@ -169,6 +183,8 @@ class AddReview(FormView):
 
 
 class FeedbackView(CreateView):
+    """ Class provides possibility to send user's quetions. Requires user's email-address, topic.
+    After input correct data sends letter to staff email"""
     form_class = FeedbackForm
     template_name = 'market/feedback.html'
     success_url = reverse_lazy("feedback_done")
