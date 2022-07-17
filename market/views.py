@@ -205,10 +205,12 @@ class FeedbackView(CreateView):
 
 
 class FeedbackDone(TemplateView):
+    """ Shows template after successful add review"""
     template_name = "market/feedback_done.html"
 
 
 class SearchResultsView(ListView):
+    """ Displays results of search. Shows all products which contains search words"""
     template_name = 'market/search_results.html'
     model = Product
 
@@ -219,10 +221,12 @@ class SearchResultsView(ListView):
 
 
 class SearchView(TemplateView):
+    """ Shows page with search form """
     template_name = "market/search.html"
 
 
 def add_to_favorites(request, product_pk):
+    """ Function for add current product to favorites """
     user = request.user
     product = Product.objects.get(pk=product_pk)
     data = {'product_favorite': product.pk,
@@ -233,24 +237,29 @@ def add_to_favorites(request, product_pk):
 
 
 class ProductAlreadyFavorites(TemplateView):
+    """ Shows page with information if current product already in user's favorites """
     template_name = "market/product_already_in_favorites.html"
 
 
 def remove_from_favorites(request, product_favorite_pk):
+    """ Provides to delete current product from favorites """
     user_favorites = Favorites.objects.filter(user=request.user).get(product_favorite=product_favorite_pk)
     user_favorites.delete()
     return redirect("removed_favorite")
 
 
 class RemovedFavorite(TemplateView):
+    """ Template for successful remove from user's favorites """
     template_name = "market/removed_favorite.html"
 
 
 class AddedToFavorites(TemplateView):
+    """ Show information after successful add to favorites """
     template_name = 'market/added_to_favorites.html'
 
 
 class FavoritesView(ListView):
+    """ Shows list with all favorite products for current user """
     model = Favorites
     template_name = "market/favorites.html"
     context_object_name = "favorites"
