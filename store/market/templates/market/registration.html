@@ -1,0 +1,75 @@
+{% extends "market/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+            input[type="text"] {
+                text-align: center;
+            }
+            input[type="email"] {
+                text-align: center;
+            }
+            input[type="password"] {
+                text-align: center;
+            }
+</style>
+<!-- ======= Register Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h3>Регистрация</h3>
+            <div class="row gy-4" align="justify">
+            <form method="post">
+            {%csrf_token%}
+             <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Логин</label>
+                        <input type="email_sender" class="form-control" placeholder="Будет использован для входа на сайт" class="input-xlarge" required=""{{form.username }}
+                    </div>
+                 <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Эл.почта</label>
+                        <input type="email_sender" class="form-control" placeholder="В формате xxxx@gmail.com" class="input-xlarge" required=""{{form.email}}
+                    </div>
+
+                 <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Имя</label>
+                        <input type="email_sender" class="form-control" placeholder="Иван" class="input-xlarge" required=""{{form.first_name }}
+                    </div>
+                 <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <label form="topic" class="control-label">Пароль</label>
+                        <input type="topic" class="form-control" placeholder="Должен быть не менее 8 символов и состоять из букв и цифр"{{form.password1 }}
+                    </div>
+
+                 <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Фамилия</label>
+                        <input type="email_sender" class="form-control" placeholder="Иванов" class="input-xlarge" required=""{{form.last_name }}
+                    </div>
+                 <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <label form="topic" class="control-label">Пароль (повторно)</label>
+                        <input type="topic" class="form-control" placeholder="Должен быть не менее 8 символов и состоять из букв и цифр"{{form.password2 }}
+                    </div>
+                 <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Город</label>
+                        <input type="email_sender" class="form-control" placeholder="Минск" class="input-xlarge" required=""{{form.city}}
+                    </div>
+                 <div class="col-md-6 form-group">
+                        <label form="email_sender" class="control-label">Адрес</label>
+                        <input type="email_sender" class="form-control" placeholder="ул. Иванова д.1 кв.5" class="input-xlarge" required=""{{form.adress}}
+                    </div>
+                 <div class="justify-content-md-center">
+                       {{ form.captcha.label_tag }}<br>
+                            {{ form.captcha }}
+                    </div>
+
+                    <div class="col-lg-12" align="center">
+                        <div align="center" style="position:center; margin-top:20px">
+                           <input type="submit" class="btn btn-outline-success" value="Отправить" align="center" type="hidden" name="next" value="{{ next }}">
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</section>
+
+{%endblock%}

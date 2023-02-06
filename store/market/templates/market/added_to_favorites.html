@@ -1,0 +1,16 @@
+{% extends 'market/base.html'%}
+{%load static%}
+
+
+{%block content%}
+<!-- ======= Added to Reviews Section ======= -->
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h3>Вы добавили товар в Избранное</h3>
+            <a class="btn btn-outline-success btn-sm" href="{%url 'favorites'%}">Перейти в Избранное</a>
+            <a class="btn btn-outline-success btn-sm" href="{%url 'catalog'%}">Вернуться в Каталог</a>
+        </div>
+    </div>
+</section>
+{%endblock%}

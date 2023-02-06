@@ -1,0 +1,58 @@
+{% extends "market/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+            input[type="text"] {
+                text-align: center;
+            }
+</style>
+<!-- ======= Login Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h3>Войти в учётную запись</h3>
+            <div class="row gy-4" align="justify">
+              {% if form.errors %}
+                <p>Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</p>
+              {% endif %}
+
+              {% if next %}
+                {% if user.is_authenticated %}
+                  <p>Вы не имеете доступа к данным этой страницы.</p>
+                {% else %}
+                  <p>Войдите для просмотра данной страницы.</p>
+                {% endif %}
+              {% endif %}
+            </div>
+            <div class="row gy-4" align="justify" style="margin-top:20px">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+    <div class="row" align="center" >
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 form-group">
+           <label form="email_sender" class="control-label">Логин</label>
+            <input type="login" class="form-control" placeholder="" class="input-xlarge" required=""{{form.username }}
+        </div>
+         <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row" align="center">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 form-group">
+           <label form="email_sender" class="control-label">Пароль</label>
+            <input type="password" class="form-control" placeholder="" class="input-xlarge" required=""{{form.password }}
+        </div>
+        <div align="center">
+                <input type="submit" style="margin-top:20px" class="btn btn-outline-success" value="Войти"/><input type="hidden" name="next" value="{{ next }}" />
+                <input  type="submit" style="margin-top:20px" class="btn btn-outline-success" value="Забыли пароль?" href="{% url 'password_reset' %}" />
+          </div>
+        <div class="col-md-3">
+        </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+{%endblock%}

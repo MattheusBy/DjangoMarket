@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - store
+  db:
+    restart: always
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234567890
+      - POSTGRES_DB=postgres
+      - POSTGRES_PORT=5433
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    depends_on:
+      - store
+  store:
+    restart: always
+    build: ./store
+    ports:
+      - 8000:80
+    volumes:
+      - app:/usr/src/app
+      - static:/usr/src/app/static
+    command: bash -c "poetry run python manage.py makemigrations &&
+                    poetry run python manage.py migrate &&
+                    poetry run gunicorn shop_server.wsgi:application --bind 0.0.0.0:8000"
+
+volumes:
+  app:
+  static:
+  web-static:
+  postgres_data:

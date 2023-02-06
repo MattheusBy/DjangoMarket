@@ -1,0 +1,17 @@
+{%extends 'market/base.html'%}
+
+{%block content%}
+<!-- ======= Add to Reviews Section ======= -->
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h3>Отзыв о товаре</h3>
+
+            <form action="{% url 'add_to_favorites' product_pk=product.pk %}" method="post">
+            {{forms.add_to_favorites}}
+            {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</section>
+{%endblock%}

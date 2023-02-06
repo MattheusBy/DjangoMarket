@@ -1,0 +1,30 @@
+{%extends 'market/base.html'%}
+{%block content%}
+
+          <!-- ======= Stocks Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h2>Акции</h2>
+        </div>
+
+        <div class="row gy-4">
+          {%for stock in stocks%}
+
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-item">
+              <div class="pricing-header" style="background-color:#01A156">
+                <h3>{{stock.name}}</h3>
+              </div>
+              <div class="text-center mt-auto">
+                <a href="{%url 'stocks_info' stock_pk=stock.pk%}" class="buy-btn" style="margin-top:20px">Подробнее</a>
+              </div>
+            </div>
+          </div><!-- End Pricing Item -->
+          {%endfor%}
+    </section><!-- End About Page -->
+
+{%endblock%}
+
+
+

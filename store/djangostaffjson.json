@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "djangostaff-353114",
+  "private_key_id": "hidden",
+  "private_key": "-----BEGIN PRIVATE KEY-----\hidden___XtEuMXIbjb0Azf+syt0BDd888zEWyj0voZEaSfofR+Yqs5CpZb\n7pzhJwhYtMzAeWhwkNHdGD+NZZ+Bm+HtcaEieSpxLoNnoYz+zWSwMhHPUbB/lbJa\nob3fVPQoC1yPqtCvEewCuSIa65zpaUwEUQpHVs7L13ZrV1Y/azDPcxkJmCJCo8Cf\n7qEVdSqlZtDZOM16UdXi9x4unCvMfX/jhiSQgNn7mWxLxcwTxiPqVp4x1f2+EGeY\nDT18IEKNAgMBAAECggEAEnunjvEZRQrOfq5sQJ7jzKQhgyVaeMiP2MruU3Fo5HlX\nph3mtmzLyi9Vk4yTz8tA+dkqkhCX3XXHUbw7QWZYJq4JWijerssg6YZdpnVHpfnn\ndA6JcPM1+Yi2cnTBIY9I6X0NSQ3tRAllSLvkt/JHj8efoyrlEtEpO/liVkBGvgO8\nHVer5Ly8lXBReQ2u0BbTZhrD89YxBqcUpdHkNvR5ouEqosGAFMh1leFaH4NMZTXN\nH6iR0/D4NmadBiu88DGg9fxduoE/33weaP82qHpv8IowoNlMvDpr4sZxFnkPq29R\nnXzujE0ltCT/nZEoTiVQeK9WcjudcKVHClESSDBl4QKBgQDqtKY8o3Z5RnzTTWI7\nmkld/eXDa6Nh/coXFj6FWPoAzbs3gIO3cBze8B+HOxFLBLHsurEamQ8YaO5jXfYl\ndANwVfOo2BKBka7lTkylUwYrFntAHW6ChIU29bY3M4AaZWhzzs7qULKQ2Cni5jAt\n0KBhG129D+cetDF3U4eIkdNmXQKBgQDNjssk6boNJQCh2VHxeVIe/q7rkeWD0vty\n7Km3bPoLGLkIkJI5jkZY1WKzZPvhHh8sP5641gR5pwtuB6x2elS6N4c3XOBnDK7D\nGSugNIoa5tZUc3a/mQ0y4hahH92hbIoK37OfIF+AY6vtQ9vDDVV9vsoTRjb5eXuJ\nyMUCwBgp8QKBgQDlCG4kRFtrUyaiSCRxB0lLCGW7QoGIMVGRH+rY04/7Use8DJP8\nYNI7l1Uc8L4aV7WMzk3fJ7d8WYEvxFRcDg8BA08n19qPR+vE5piSyCb/ywtw8IeT\no+AfVr1+tqnumEDKqehu7VqjT93oBjrDqo+m0z6xLSCbbLnMuN1MnwkNHQKBgDJt\ny6ycooZDA6qxNAc3qkvsU2F7g4EZq5KAOQrE83rxb8OIJDd2jg+RGgvExH5v81nZ\nqcjSyHpH3uf5fff6/vpIUSXl5S+izuUSMb+15APBiediBEnw9Gn9SWvx8198z0jn\npJtvR76ptS4aLbnmdYjJ261q1mXRxdsBpEOOeN8hAoGBAIiTRIaiH8IBvWgE6Grj\ncOAvyCGLrXkklCYPLqyVEKISZrlGmhhdM7AhsdMvg+NBf9ltQs2Swu0zGa5THnMy\n+YGTPwIvyTEoWtDliNT4VvvHFj+XPjB2h/312O48Zi0R8IQ1/yK5X53AAjPDXiHg\n8BV54/LgIu/ap4cvsZPVscHB\n-----END PRIVATE KEY-----\n",
+  "client_email": "hidden",
+  "client_id": "hidden",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/djangostuff%40djangostaff-353114.iam.gserviceaccount.com"
+}

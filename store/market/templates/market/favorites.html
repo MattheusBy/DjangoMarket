@@ -1,0 +1,64 @@
+{%extends 'market/base.html'%}
+{%block content%}
+
+
+<!-- ======= Favorites Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header" style="margin-top:30px">
+      <h3>Избранное</h3>
+        {%if not favorites%}
+           <p>У Вас нет избранных товаров</p>
+            </div>
+          {%else%}
+        {%for favorite in favorites%}
+        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-5">
+            <div class="about-img">
+              <img src='{{MEDIA_ROOT}}{{favorite.product_favorite.foto.url}}' class="img-fluid" width="200px" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-7" align="left">
+            <div class="tab-content" align="left" style="margin-left:0px">
+              <div class="tab-pane fade show active" id="tab1">
+                  <h3 class="pt-0 pt-lg-5"><a href="{%url 'product' product_pk=favorite.product_favorite.pk%}">{{favorite.product_favorite.name}}</a></h3>
+                <p>{{favorite.product_favorite.description|slice:":128"}}...</p>
+                </div>
+                <div class="d-flex align-items-center mt-4" style="align:left">
+                  <i class="bi bi-check2"></i>
+                    <h4>Цена: <strong>{{favorite.product_favorite.price}} BYN</strong></h4>
+                </div>
+                <div class="d-flex align-items-center mt-4">
+
+                    {%if favorite.product_favorite.count > 0 %}
+                    <i class="bi bi-check2"></i>
+                   <h4> В наличии</h4>
+                {%else%}
+                    <i class="bi bi-x-circle"></i>
+                   <h4> Нет в наличии</h4>
+                {%endif%}
+                    </div>
+                {%if user.is_authenticated%}
+                        {%if favorite.product_favorite.count > 0%}
+                        <div class="d-flex align-items-center mt-4">
+                            <form action="{% url 'cart_add' product_pk=favorite.product_favorite.pk %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-outline-success" value="Добавить в корзину">
+                                <a class="btn btn-outline-danger" href="{%url 'remove_favorite' product_favorite_pk=favorite.product_favorite.pk%}"> Удалить из Избранного </a>
+                            </form>
+                                {%else%}
+                        {%endif%}
+                {%endif%}
+              </div>
+            </div>
+          </div>
+            {%endfor%}
+    </div>
+
+{%endif%}
+    </div>
+  </div>
+</section>
+{%endblock%}

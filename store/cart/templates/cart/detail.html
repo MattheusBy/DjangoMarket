@@ -1,0 +1,86 @@
+{% extends "market/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+            input[type="text"] {
+                text-align: center;
+            }
+</style>
+<!-- ======= Cart Item Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header" style="margin-top:30px">
+          <h3>Корзина</h3>
+
+          {%if not cart%}
+           <p>В Вашей корзине пока нет товаров</p>
+            </div>
+          {%else%}
+            {%if cart%}
+                {%for item in cart %}
+                   {% with product=item.product%}
+        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-5">
+            <div class="about-img">
+              <img src='{{MEDIA_ROOT}}{{product.foto.url}}' class="img-fluid" width="200px" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-7" align="left">
+
+            <!-- Tab Content -->
+            <div class="tab-content" align="left" style="margin-left:0px">
+              <div class="tab-pane fade show active" id="tab1">
+                  <h3 class="pt-0 pt-lg-5"><a href="{%url 'product' product_pk=product.pk%}">{{product.name}}</a></h3>
+                </div>
+                <div class="d-flex align-items-center mt-4" style="align:left">
+                  <i class="bi bi-check2"></i>
+                    <h4>Количество: <strong>{{item.quantity}}</strong></h4>
+                </div>
+                <div class="d-flex align-items-center mt-4" style="align:left">
+                  <i class="bi bi-check2"></i>
+                    <h4>Цена: <strong>{{product.price}} BYN</strong></h4>
+                </div>
+                <div class="d-flex align-items-center mt-4" style="align:left">
+                 <a class="btn btn-outline-success btn-sm" href="{%url 'product' product_pk=product.pk%}"> Подробнее </a>
+                 <a style="margin-left:10px" class="btn btn-outline-danger btn-sm" href="{%url 'cart_remove' product_pk=product.pk%}"> Удалить из корзины </a>
+                </div>
+          </div>
+        </div>
+            {%endwith%}
+            {%endfor%}
+            {%endif%}
+            {%endif%}
+    </section><!-- End About Section -->
+{%if not cart%}
+{%else%}
+<section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Оформить заказ</h2>
+            {% if not cart.coupon %}
+          <p> Если у Вас есть промокод - введите его в поле ниже</p>
+            <form action="{% url 'apply_coupon' %}" method="post" style="margin-bottom:30px">
+                {% csrf_token %}
+                <div class="form-group" style="margin-top:10px;border-color:green" >
+                    <a style="width:50px" align="justify" >{% render_field coupon_apply_form.code type="text" placeholder="Промокод" text-align="center"%}</a>
+                </div>
+                <input style="margin-top:10px" type="submit" value="Применить промокод" class="btn btn-outline-success btn-sm">
+            </form>
+            {%else%}
+            <h5>Промокод "{{cart.coupon.code}}" успешно применен!</h5>
+            {%endif%}
+            {% if cart.coupon %}
+            <h5>Ваша скидка {{ cart.get_total_price_after_discount.discount|floatformat:"2" }} </h5>
+            <h4><strong>ИТОГО:{{ cart.get_total_price_after_discount.finish_price|floatformat:"2" }} BYN</strong></h4>
+            {%else%}
+            <h4><strong>ИТОГО:{{ cart.get_total_price }} BYN</strong></h4>
+            {%endif%}
+                     <a class="btn btn-outline-success btn-sm" href="{%url 'catalog'%}">Продолжить покупки</a>
+                    <a class="btn btn-outline-success btn-sm" href="{% url 'order_create' %}">Перейти к оплате</a>
+        </div>
+    </div>
+</div>
+</section>
+{%endif%}
+{%endblock%}
