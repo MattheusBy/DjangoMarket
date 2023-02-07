@@ -279,9 +279,12 @@
           <br>
           <div class="col-lg-2 col-md-6" align="center">
             <h4>Погода</h4>
-            <p style="font-size:20px"><i class="bi bi-geo-alt-fill"></i> г. {{city}}</p5>
-            <p style="font-size:20px"><i class="bi bi-thermometer-half"></i> {{real_temperature}}°C</p>
-            <p style="font-size:20px"><i class="bi bi-person"></i> {{feels_like_temperature}}°C</p>
+            <div class="row">
+            <h6 style="font-size:20px"><i class="bi bi-geo-alt-fill"></i> г. {{city}}</h6>
+            <h6 style="font-size:20px"><i class="bi bi-thermometer-half"></i> {{real_temperature}}°C</h6>
+            <h6 style="font-size:20px"><i class="bi bi-person"></i> {{feels_like_temperature}}°C</h6>
+            <h6 style="font-size:20px"><i class="bi bi-droplet"></i> {{humidity}}%</h6>
+            </div>
           </div>
 
         </div>

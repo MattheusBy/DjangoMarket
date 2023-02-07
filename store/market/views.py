@@ -23,9 +23,12 @@ class IndexView(ListView):
 
     def get_queryset(self):
         max_id = Product.objects.all().aggregate(max_pk=Max("pk"))['max_pk']
-        for pk in range(1, max_id):
-            pk = random.randint(1, max_id - 2)
-            return Product.objects.filter(pk__gte=pk)
+        if max_id is None:
+            pass
+        else:
+            for pk in range(1, max_id):
+                pk = random.randint(1, max_id - 2)
+                return Product.objects.filter(pk__gte=pk)
 
 
 def login(request):
