@@ -79,8 +79,12 @@ class UserCreateForm(UserCreationForm):
         fields = ("username", "last_name", "email", 'captcha', 'city',)
         widgets = {"username": forms.TextInput,
                    "last_name": forms.TextInput,
-                   "password1": forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-                   "password2": forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+                   "password1": forms.PasswordInput(
+                       attrs={'autocomplete': 'new-password'}
+                   ),
+                   "password2": forms.PasswordInput(
+                       attrs={'autocomplete': 'new-password'}
+                   ),
                    "email": forms.EmailInput(),
                    "city": forms.TextInput,
                    }

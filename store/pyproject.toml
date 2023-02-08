@@ -6,7 +6,7 @@ authors = ["MattheusBy <mattaudia6@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8.2"
 django = "^4.1.5"
 celery = "^5.2.7"
 bs4 = "^0.0.1"
@@ -22,6 +22,7 @@ lxml = "^4.9.2"
 django-cors-headers = "^3.13.0"
 whitenoise = "^6.3.0"
 gunicorn = "^20.1.0"
+flake8 = "^6.0.0"
 
 
 [build-system]
