@@ -1,25 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import FileExtensionValidator
-# from gdstorage.storage import GoogleDriveStorage, GoogleDriveFilePermission, GoogleDrivePermissionRole, \
-#     GoogleDrivePermissionType
 from gdstorage.storage import GoogleDriveStorage
-# permission = GoogleDriveFilePermission(
-#     GoogleDrivePermissionRole.READER,
-#     GoogleDrivePermissionType.USER,
-# )
+
 
 gd_storage = GoogleDriveStorage()
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=128, verbose_name="Наименование")
+    name = models.CharField(
+        max_length=128, verbose_name="Наименование"
+        )
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
     foto = models.FileField(storage=gd_storage)
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
-    subcategory = models.ForeignKey("Subcategory", on_delete=models.CASCADE, blank=True, null=True)
+    subcategory = models.ForeignKey(
+        "Subcategory", on_delete=models.CASCADE, blank=True, null=True
+        )
 
     def __str__(self):
         return f'{self.name}    {self.subcategory}'
@@ -71,7 +69,9 @@ class Basket(models.Model):
     product = models.CharField(max_length=128, blank=True)
     count = models.IntegerField(blank=True)
     price = models.IntegerField(blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, blank=True, null=True
+        )
 
     def __str__(self):
         return f"{self.user}{self.product}{self.price}{self.count}"
@@ -84,7 +84,10 @@ class Feedback(models.Model):
     text_message = models.TextField()
 
     def __str__(self):
-        return f"{self.email_sender}{self.topic}{self.email_recipient}{self.text_message}"
+        return f"{self.email_sender}" \
+               f"{self.topic}" \
+               f"{self.email_recipient}" \
+               f"{self.text_message}"
 
 
 class CustomUser(models.Model):
@@ -96,8 +99,12 @@ class CustomUser(models.Model):
 
 
 class Favorites(models.Model):
-    product_favorite = models.ForeignKey(Product, on_delete=models.CASCADE, null=False, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    product_favorite = models.ForeignKey(
+        Product, on_delete=models.CASCADE, null=False, blank=False
+        )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=False, blank=False
+        )
 
     def __str__(self):
         return f"{self.user} {self.product}"
