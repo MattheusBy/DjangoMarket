@@ -66,6 +66,7 @@
           <li><a class="nav-link scrollto" href="{%url 'feedback'%}">Обратная связь</a></li>
           <li><a class="nav-link scrollto" href="{%url 'search'%}">Поиск</a></li>
   	{%if not user.is_authenticated%}
+          <div class="vl" style="border-left: 2px solid #1de789; height: 30px;"></div>
       	  <li><a class="nav-link scrollto" href="{%url 'login'%}">Войти</a></li>
           <li><a class="nav-link scrollto" href="{%url 'register'%}">Зарегистрироваться</a></li>
          {%else%}

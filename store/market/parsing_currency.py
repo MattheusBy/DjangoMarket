@@ -10,11 +10,6 @@ headers = {
 }
 req = requests.get(url_usd, headers=headers)
 src = req.text
-with open("parsed_currency_usd.html", "w") as file:
-    file.write(src)
-
-with open("parsed_currency_usd.html", "r") as file:
-    src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
 
@@ -22,11 +17,6 @@ dollar_search = soup.find("div", "cur-rate__value")
 
 req = requests.get(url_eur, headers=headers)
 src = req.text
-with open("parsed_currency_eur.html", "w") as file:
-    file.write(src)
-
-with open("parsed_currency_eur.html", "r") as file:
-    src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
 
