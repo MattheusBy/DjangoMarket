@@ -1,5 +1,8 @@
-""" Module for sending email to all registered users with information about things in catalog.
-    Celery use this file as task """
+"""
+Module for sending email to all registered users
+with information about things in catalog.
+Celery use this file as task
+"""
 
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -9,9 +12,12 @@ from shop_server.celery import app
 
 @app.task
 def mass_send_mail():
+    # function for mass mailing
     list_recipients = []
+    # get all resistered users
     for user in User.objects.all():
         list_recipients.append(user.email)
+    # structure of mail-letter
     msg_html = render_to_string('market/mass_mail.html')
     subject = "Маркет.бай"
     message = "Найдите все интересующие Вас товары"
