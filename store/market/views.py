@@ -34,7 +34,6 @@ class IndexView(ListView):
                 pk = random.randint(1, max_id - 2)
                 return Product.objects.filter(pk__gte=pk)
 
-
 def login(request):
     """ Function for login """
     if request.method == "GET":
