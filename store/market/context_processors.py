@@ -1,4 +1,4 @@
-"""This file provides tempretures and user's city for context processor.
+"""This file provides temperatures and user's city for context processor.
 Then it displays in base.html """
 
 
