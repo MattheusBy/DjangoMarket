@@ -1,10 +1,10 @@
 {
   "type": "service_account",
   "project_id": "djangomarket",
-  "private_key_id": "83c36b901f4247d8d4f37c70eae8fbc20e7bc3dc",
+  "private_key_id": "______HIDDEN______",
   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCkUpl3sg/YpJoy\nTmd+1N8n3CVZWX40/Jd5zHMplxiQ547XogiR4PdITW6qvUCVlyMxv5EzdyUkWTQU\nVJJRchTQvpo2lPLbTlb6Qpmp6ssPb8n6jC+ID+lowL5lWilpAa9+ZZVb75IVxG0f\nBTbufrQ+5RKuI8ideSOe4YhHGuJC8x7Mj70kc7jhaldQjloarZsNXJOu+3Lu1zX1\nqW96VBAeorP4ZfTLceRGinOrFhvQwWB79cTmRXOgdwVM4/yGhceDUJSIfuloo3/S\nMct3Ij6p/jrZWTR/XIpUV0hPAzkaDp4l1H9nrkE7BuVOVLyGNK7S6LXyy3jFlBq+\nPTRyA+mzAgMBAAECggEASmhMrfKnUkZWvGjcXIYv9nCtSORJTd0DClgV3cNZkGQK\nPoJUtxnTX54Qeqfv0sz5VtGUAmX1H5x1BK+3AcJSwqNMWWLhBYVXxULbKiHziS3p\nm9ZWv5nU62Y70NEe5zmoKef91f+JeunTL7TAxwYAwGoiJ1B0yznLc2pUtz3pLr8G\ndYrmNIUQSG5md7TYjLhzJ80BcDLv3WZx+iNgM8bLVdFieVQhA7CxJRoMpaYpjvjS\niwEOXUDV0ItPH/O5NT+W335OP4q/XITog8+d87Bhg9YXn2tUA9bqI64N9N+2z3i4\n2lAnQgY/Z2FMekvfxq7JRTsy9uEgZ5MWD+QX1pjzQQKBgQDPGSDnf7LCaWyc5Mpz\n9W5lrNiWRr70KzU/4YJysX1OSlVYAXNLyfmiDK/G4QFwCxeHtHkTVwJPqwAYnQoc\n9owF0hrNEQtQapsRVL7iKRf+eAEbb3oKZrqMZSljgC/wYfJvkIOJLBoJrk+DqsnO\nK+vh2FBcN9gSsYy/xTVDyD1NawKBgQDLH7xNfOfYFy28TPURXjUrF5GKQBFuXvVv\nxr5hK3c3uyQfPsRVOgt9E+eQq2pJhhU3ZWyrxvY8EQ9FeitveoGJYufiVLIHR6HE\ncDKK3i+cQWG/MqL9qOCIw5i10eqc4ubMYzRyQ1RwBZ6JzqwSza9RhCqep8PAjAKu\n1Mf34uBe2QKBgQDGjODvEY7gtRJcmT1AT124PS6pZMpObd5vkFTwgRoRpVKNPVa8\noreilWcw1Sf7s6arhGtQD2s31koRTv4TJoy4R+dKE701K//fbdBUI/HNFmB5XTc0\nIalYUOSNcKiFXmKAc5yoNpAAGA5Dvcoc0B8mN61TvHZ79Z1rfjbC9YdQYQKBgQCH\nWZBKOg7rSRaqwMUUW6gmHMBYVTTITPJTFyXI7gO02TjKsTJ2cAUzxU2qcu6SK4x7\nq1PsatmtUNjSPQQwdntWptdJU5KFk0/R68liC4fCITcXBpDhYeSsfVmG3mftPqz4\nSKqr8P2U38mynkq/BNvr/5u+uJ+R8DnhcdwF6+ICkQKBgGJVQtw0orpfTfYaWWaJ\nF3MiSjwF0drirjewytPqWlPg/4uiuMvMVPrqu4oiCj/nDyfnFvthuBgCnYxOzEbQ\nB54p/7g+AJnXe7T5e4OUORPVvbpqAAfuc3/DLEyw1jvve87vmZC/jqugTmS+jQC3\nmv7jZamOWn8PULm0KbBm1q0R\n-----END PRIVATE KEY-----\n",
   "client_email": "djangomarket@djangomarket.iam.gserviceaccount.com",
-  "client_id": "105633180341804140731",
+  "client_id": "______HIDDEN______",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
