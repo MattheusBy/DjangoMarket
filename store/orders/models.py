@@ -1,8 +1,13 @@
+"""
+The module contains models
+for DB for orders
+"""
 from django.db import models
 from market.models import Product
 
 
 class Order(models.Model):
+    # Model for create new order
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -22,12 +27,19 @@ class Order(models.Model):
         return 'Order {}'.format(self.id)
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return sum(item.get_cost()
+                   for item in self.items.all())
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
+    # class for each Product
+    # in Order
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE,
+        related_name='items')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE,
+        related_name='order_items')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 

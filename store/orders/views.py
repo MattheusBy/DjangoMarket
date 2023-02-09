@@ -19,10 +19,12 @@ def order_create(request):
                                          price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
-            send_mail("Вы успешно оформили заказ!", "Ваш заказ будет доставлен в ближайшее время",
-                      'DjangoMarket@yandex.by',
-                      [form.instance.email],
-                      fail_silently=False, )
+            send_mail(
+                "Вы успешно оформили заказ!",
+                "Ваш заказ будет доставлен в ближайшее время",
+                "DjangoMarket@yandex.by", [form.instance.email],
+                fail_silently=False,
+            )
 
             request.session['order_id'] = order.id
             return redirect(reverse('process'))
