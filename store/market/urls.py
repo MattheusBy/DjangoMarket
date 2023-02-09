@@ -1,6 +1,5 @@
 """
 The collection of url-paths for market-application
-
 """
 
 from django.urls import path
