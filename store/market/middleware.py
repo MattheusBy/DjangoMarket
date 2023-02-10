@@ -23,7 +23,7 @@ def get_user_city(get_response):
     def middleware(request):
         API_key = "b09bd89bc931d83516a203e87c35997d"
         # check user's authorization
-        if not request.user:
+        if not request.user or request.user.is_superuser:
             request.city = "Минск"
         else:
             if not request.user.is_authenticated:

@@ -15,6 +15,5 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('market/', include('market.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('API/', include('market.urls_api')),
     path('captcha/', include('captcha.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

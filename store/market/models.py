@@ -1,23 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
-from gdstorage.storage import GoogleDriveStorage
-
-
-gd_storage = GoogleDriveStorage()
 
 
 class Product(models.Model):
     name = models.CharField(
         max_length=128, verbose_name="Наименование"
-        )
+    )
     description = models.TextField(verbose_name="Описание")
     price = models.IntegerField()
-    foto = models.FileField(storage=gd_storage)
+    foto = models.FileField()
     marks = models.PositiveSmallIntegerField()
     count = models.IntegerField(default=0)
     subcategory = models.ForeignKey(
         "Subcategory", on_delete=models.CASCADE, blank=True, null=True
-        )
+    )
 
     def __str__(self):
         return f'{self.name}    {self.subcategory}'
@@ -42,7 +38,7 @@ class Reviews(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
-    logo = models.FileField(storage=gd_storage)
+    logo = models.FileField()
 
     def __str__(self):
         return f"{self.name}"
@@ -51,7 +47,7 @@ class Category(models.Model):
 class Subcategory(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    logo = models.FileField(storage=gd_storage)
+    logo = models.FileField()
 
     def __str__(self):
         return f"{self.name}"
@@ -71,7 +67,7 @@ class Basket(models.Model):
     price = models.IntegerField(blank=True)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True
-        )
+    )
 
     def __str__(self):
         return f"{self.user}{self.product}{self.price}{self.count}"
@@ -101,10 +97,10 @@ class CustomUser(models.Model):
 class Favorites(models.Model):
     product_favorite = models.ForeignKey(
         Product, on_delete=models.CASCADE, null=False, blank=False
-        )
+    )
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=False, blank=False
-        )
+    )
 
     def __str__(self):
         return f"{self.user} {self.product}"
