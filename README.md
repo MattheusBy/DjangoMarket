@@ -3,7 +3,7 @@
 Online store.
 ## Detail Description
 
-http://matsveymalchanau.info/djangomarket/
+http://matsveymalchanau.info/djangomarket
 ## Author
 
 Author: Matsvey Malchanau 
