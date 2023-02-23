@@ -1,47 +1,36 @@
 # DjangoMarket
 
 Online store.
+
 ## Detail Description
 
-http://matsveymalchanau.info/djangomarket
+Read more about project [here](http://matsveymalchanau.info/djangomarket)
+
+
 ## Author
 
-Author: Matsvey Malchanau 
+Matsvey Malchanau
+
+Website: [matsveymalchanau.info](http://matsveymalchanau.info/)
 
 Email: matsvey.malchanau.python@gmail.com
 
-LinkedIn: www.linkedin.com/in/matsvey-malchanau
+LinkedIn: [Matsvey Malchanau](https://www.linkedin.com/in/matsvey-malchanau/)
 
-Github: github.com/MattheusBy 
+Github: [MattheusBy](https://github.com/MattheusBy)
 
 
 ## Technologies:
-Django
-
-Poetry
-
-Docker / Docker-Compose
-
-Gunicorn
-
-Nginx
-
-Bootstrap 5
-
-flake8
-
-OpenWeatherAPI
-
-Celery+Redis
+Django, Poetry, Docker / Docker-Compose, Gunicorn, Nginx, Bootstrap 5, flake8, OpenWeatherAPI, Celery, Redis
 
 ## Gratitude:
 
-Bootstrapmade (https://bootstrapmade.com/)
+[Bootstrapmade](https://bootstrapmade.com/)
 
-Removebg (https://www.remove.bg/)
+[Removebg](https://www.remove.bg/)
 
-Canva (https://www.canva.com)
+[Canva](https://www.canva.com)
 
-CoolBackgrounds (https://coolbackgrounds.io/)
+[CoolBackgrounds](https://coolbackgrounds.io/)
 
-icons8.com (https://icons8.com/)
+[icons8.com](https://icons8.com/)
