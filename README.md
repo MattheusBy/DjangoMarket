@@ -23,6 +23,20 @@ Github: [MattheusBy](https://github.com/MattheusBy)
 ## Technologies:
 Django, Poetry, Docker / Docker-Compose, Gunicorn, Nginx, Bootstrap 5, flake8, OpenWeatherAPI, Celery, Redis
 
+## Usage
+
+```bash
+git init
+git clone https://github.com/MattheusBy/DjangoMarket.git
+cd DjangoMarket
+docker-compose build
+docker-compose up
+```
+After that follow link in your browser:
+
+http//:0.0.0.0:80/
+
+
 ## Gratitude:
 
 [Bootstrapmade](https://bootstrapmade.com/)
